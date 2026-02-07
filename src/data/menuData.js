@@ -67,7 +67,7 @@ const rawMenuData = {
     ],
     starters: [
         { name: "Zain Special Soup", price: "AED 6" },
-        { name: "Chicken 65", price: "AED 15" }
+        { name: "Chicken 65", price: "AED 15" },
         { name: "Chicken Popcorn", price: "AED 14" }
     ],
 
