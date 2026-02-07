@@ -17,6 +17,7 @@ export default {
         }
       },
       fontFamily: {
+        brush: ["brush script", "cursive"],
         sans: ['Inter', 'sans-serif'],
         display: ['Antonio', 'sans-serif'], // Tall, condensed
         kinetic: ['Big Shoulders Display', 'sans-serif'], // Extra condensed for huge text

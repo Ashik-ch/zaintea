@@ -13,7 +13,7 @@ const Contact = () => {
 
                 {/* Header */}
                 <div className="mb-20">
-                    <h2 className="text-8xl md:text-[10rem] font-kinetic font-bold text-zain-beige leading-none mix-blend-difference">
+                    <h2 className="text-6xl md:text-[10rem] font-kinetic font-bold text-zain-beige leading-none mix-blend-difference">
                         CONNECT
                     </h2>
                     <div className="h-2 w-32 bg-zain-red mt-4" />
@@ -26,7 +26,7 @@ const Contact = () => {
                         initial={{ opacity: 0, scale: 0.95 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
-                        className="bg-zain-brown/20 p-10 backdrop-blur-sm border border-zain-beige/10"
+                        className="bg-zain-brown/20 p-6 md:p-10 backdrop-blur-sm border border-zain-beige/10"
                     >
                         <h3 className="text-3xl font-display font-bold text-zain-gold mb-8">SEND A MESSAGE</h3>
                         <form className="space-y-8">
@@ -74,7 +74,7 @@ const Contact = () => {
                                     </div>
                                     <div>
                                         <h4 className="text-zain-gold font-display font-bold text-xl mb-1">LOCATION</h4>
-                                        <p className="text-zain-beige/60">Al Mankhool Road, Bur Dubai<br />United Arab Emirates</p>
+                                        <p className="text-zain-beige/60">Khalid bin Walid Rd, Behind Admiral Plaza<br /> Bur Dubai, United Arab Emirates</p>
                                     </div>
                                 </div>
 
@@ -84,7 +84,7 @@ const Contact = () => {
                                     </div>
                                     <div>
                                         <h4 className="text-zain-gold font-display font-bold text-xl mb-1">CALL US</h4>
-                                        <p className="text-zain-beige/60 font-mono">+971 50 123 4567</p>
+                                        <p className="text-zain-beige/60 font-mono">+971 50 122 9617</p>
                                     </div>
                                 </div>
 
@@ -94,7 +94,7 @@ const Contact = () => {
                                     </div>
                                     <div>
                                         <h4 className="text-zain-gold font-display font-bold text-xl mb-1">EMAIL</h4>
-                                        <p className="text-zain-beige/60">hello@zaintea.com</p>
+                                        <p className="text-zain-beige/60">zaintea@gmail.com</p>
                                     </div>
                                 </div>
                             </div>
@@ -102,11 +102,18 @@ const Contact = () => {
 
                         {/* Map Placeholder Graphic */}
                         <div className="w-full h-48 bg-zain-brown/10 border border-zain-beige/5 relative overflow-hidden group">
-                            <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(208,0,0,0.05)_50%,transparent_75%)] bg-[length:20px_20px]" />
-                            <div className="absolute inset-0 flex items-center justify-center">
-                                <span className="text-zain-beige/20 font-kinetic text-4xl group-hover:text-zain-red group-hover:scale-110 transition-all">
-                                    MAP VIEW
-                                </span>
+                            <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(208,0,0,0.05)_50%,transparent_75%)] bg-[length:20px_20px] pointer-events-none" />
+                            <div className="absolute inset-0 rounded-xl overflow-hidden border border-zain-beige/10 transition-transform duration-300 group-hover:scale-105">
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m12!1m8!1m3!1d7216.3108626299345!2d55.3026395!3d25.2653563!3m2!1i1024!2i768!4f13.1!2m1!1szaintea!5e0!3m2!1sen!2sae!4v1769585510094!5m2!1sen!2sae"
+                                    className="w-full h-full border-0 grayscale brightness-75 contrast-110"
+                                    allowFullScreen
+                                    loading="lazy"
+                                    referrerPolicy="no-referrer-when-downgrade"
+                                />
+
+                                {/* Dark overlay */}
+                                <div className="absolute inset-0 bg-black/40 pointer-events-none" />
                             </div>
                         </div>
 

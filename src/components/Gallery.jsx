@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import heroChicken from '../assets/hero-chicken.png';
 import aboutImage from '../assets/about-interior.png';
-import teaImage from '../assets/karak-tea.png';
+import teaImage from '../assets/Mojito-juice.jpg';
 
 const visuals = [
     { src: teaImage, title: 'BREW', size: 'col-span-1 row-span-1' },
@@ -16,7 +16,7 @@ const Gallery = () => {
 
             {/* Moving Background Text */}
             <div className="absolute top-0 left-0 w-full overflow-hidden opacity-5 pointer-events-none">
-                <h1 className="text-[15rem] whitespace-nowrap font-kinetic font-bold text-zain-beige">
+                <h1 className="text-[8rem] md:text-[15rem] whitespace-nowrap font-kinetic font-bold text-zain-beige">
                     VISUALS VISUALS VISUALS
                 </h1>
             </div>

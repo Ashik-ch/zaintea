@@ -15,12 +15,12 @@ const About = () => {
                     viewport={{ once: true }}
                     className="mb-20"
                 >
-                    <h2 className="text-9xl md:text-[10rem] font-display font-bold text-zain-gold leading-none opacity-20 select-none absolute -top-10 left-0">
+                    <h2 className="text-5xl md:text-[10rem] font-display font-bold text-zain-gold leading-none opacity-20 select-none absolute -top-10 left-0">
                         STORY
                     </h2>
-                    <h2 className="text-6xl md:text-8xl font-kinetic font-bold relative z-10">
+                    <h2 className="text-4xl md:text-8xl font-kinetic font-bold relative z-10">
                         WHERE FLAVOR <br />
-                        <span className="text-transparent stroke-text-light">MEETS FUTURE</span>
+                        <span className="stroke-text-light opacity-50">MEETS TASTE</span>
                     </h2>
                 </motion.div>
 
@@ -45,12 +45,12 @@ const About = () => {
 
                         <div className="flex gap-12 pt-10">
                             <div>
-                                <h3 className="text-5xl font-display font-bold text-zain-gold">15+</h3>
-                                <span className="text-sm tracking-widest uppercase opacity-60">Years</span>
+                                <h3 className="text-5xl font-display font-bold text-zain-gold">2022</h3>
+                                <span className="text-sm tracking-widest uppercase opacity-60">Since</span>
                             </div>
                             <div>
-                                <h3 className="text-5xl font-display font-bold text-zain-gold">100%</h3>
-                                <span className="text-sm tracking-widest uppercase opacity-60">Halal</span>
+                                <h3 className="text-5xl font-display font-bold text-zain-gold">24/7</h3>
+                                <span className="text-sm tracking-widest uppercase opacity-60">Hours</span>
                             </div>
                         </div>
                     </motion.div>
