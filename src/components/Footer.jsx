@@ -7,11 +7,11 @@ const Footer = () => {
         { label: "WHATSAPP", href: "https://wa.me/971501229617?text=Hi%20Zaintea%2C%20I%20want%20to%20place%20an%20order", },
     ];
     return (
-        <footer className="bg-transparent text-zain-beige py-20 border-t border-zain-red/20">
+        <footer className="bg-transparent text-zain-brown dark:text-zain-beige py-20 border-t border-zain-red/20 transition-colors duration-500">
             <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-10">
 
                 <div className="text-center md:text-left">
-                    <h2 className="text-[5rem] md:text-[8rem] font-kinetic font-bold leading-none text-zain-gold">
+                    <h2 className="text-[5rem] md:text-[8rem] font-kinetic font-bold leading-none text-zain-red dark:text-zain-gold">
                         ZAIN
                     </h2>
                     <p className="font-sans text-sm tracking-widest opacity-50 pl-2">
@@ -25,13 +25,13 @@ const Footer = () => {
                         <a key={label} href={href} target="_blank"
                             rel="noopener noreferrer"
                             className="text-sm font-bold font-display tracking-widest border-b border-transparent pb-1 transition-all
-                       hover:border-zain-gold hover:text-zain-gold"
+                       hover:border-zain-red dark:hover:border-zain-gold hover:text-zain-red dark:hover:text-zain-gold"
                         >{label}                        </a>
                     ))}
                 </div>
 
             </div>
-            <div className="mt-16 border-t border-white/10 pt-8 pb-10 text-center">
+            <div className="mt-16 border-t border-zain-brown/10 dark:border-white/10 pt-8 pb-10 text-center">
                 <div className="flex flex-col items-center justify-center gap-2 md:flex-row md:gap-6">
                     {/* Copyright Section */}
                     <p className="text-xs font-sans tracking-[0.2em] uppercase opacity-40">

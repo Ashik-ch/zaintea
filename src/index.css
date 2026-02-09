@@ -4,7 +4,14 @@
 
  @layer base {
    body {
-     @apply bg-zain-dark text-zain-beige font-sans antialiased overflow-x-hidden;
+     @apply bg-zain-beige text-zain-brown font-sans antialiased overflow-x-hidden transition-colors duration-300;
+     /* Light mode background */
+     background-image: radial-gradient(circle at 50% 0%, #ffffff 0%, #f5f5f5 30%, #e0e0e0 80%);
+   }
+
+   .dark body {
+     @apply bg-zain-dark text-zain-beige;
+     /* Dark mode background */
      background-image: radial-gradient(circle at 50% 0%, #600000 0%, #300000 30%, #050505 80%);
    }
  }

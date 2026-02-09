@@ -4,7 +4,7 @@ import { Send, MapPin, Phone, Mail } from 'lucide-react';
 
 const Contact = () => {
     return (
-        <section id="contact" className="py-32 bg-transparent relative overflow-hidden border-t border-zain-beige/10">
+        <section id="contact" className="py-32 bg-transparent relative overflow-hidden border-t border-zain-brown/10 dark:border-zain-beige/10">
 
             {/* Background Decor */}
             <div className="absolute right-0 top-0 w-1/3 h-full bg-zain-red/5 skew-x-12 pointer-events-none" />
@@ -13,7 +13,7 @@ const Contact = () => {
 
                 {/* Header */}
                 <div className="mb-20">
-                    <h2 className="text-6xl md:text-[10rem] font-kinetic font-bold text-zain-beige leading-none mix-blend-difference">
+                    <h2 className="text-6xl md:text-[10rem] font-kinetic font-bold text-zain-brown dark:text-zain-beige leading-none mix-blend-difference dark:mix-blend-normal">
                         CONNECT
                     </h2>
                     <div className="h-2 w-32 bg-zain-red mt-4" />
@@ -26,29 +26,29 @@ const Contact = () => {
                         initial={{ opacity: 0, scale: 0.95 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
-                        className="bg-zain-brown/20 p-6 md:p-10 backdrop-blur-sm border border-zain-beige/10"
+                        className="bg-zain-brown/5 dark:bg-zain-brown/20 p-6 md:p-10 backdrop-blur-sm border border-zain-brown/10 dark:border-zain-beige/10"
                     >
-                        <h3 className="text-3xl font-display font-bold text-zain-gold mb-8">SEND A MESSAGE</h3>
+                        <h3 className="text-3xl font-display font-bold text-zain-red dark:text-zain-gold mb-8">SEND A MESSAGE</h3>
                         <form className="space-y-8">
                             <div className="relative group">
                                 <input
                                     type="text"
                                     placeholder="NAME"
-                                    className="w-full bg-transparent border-b border-zain-beige/20 py-4 text-zain-beige font-sans focus:outline-none focus:border-zain-red transition-colors placeholder:text-zain-beige/20"
+                                    className="w-full bg-transparent border-b border-zain-brown/20 dark:border-zain-beige/20 py-4 text-zain-brown dark:text-zain-beige font-sans focus:outline-none focus:border-zain-red transition-colors placeholder:text-zain-brown/40 dark:placeholder:text-zain-beige/20"
                                 />
                             </div>
                             <div className="relative group">
                                 <input
                                     type="email"
                                     placeholder="EMAIL"
-                                    className="w-full bg-transparent border-b border-zain-beige/20 py-4 text-zain-beige font-sans focus:outline-none focus:border-zain-red transition-colors placeholder:text-zain-beige/20"
+                                    className="w-full bg-transparent border-b border-zain-brown/20 dark:border-zain-beige/20 py-4 text-zain-brown dark:text-zain-beige font-sans focus:outline-none focus:border-zain-red transition-colors placeholder:text-zain-brown/40 dark:placeholder:text-zain-beige/20"
                                 />
                             </div>
                             <div className="relative group">
                                 <textarea
                                     rows="4"
                                     placeholder="YOUR MESSAGE"
-                                    className="w-full bg-transparent border-b border-zain-beige/20 py-4 text-zain-beige font-sans focus:outline-none focus:border-zain-red transition-colors placeholder:text-zain-beige/20 resize-none"
+                                    className="w-full bg-transparent border-b border-zain-brown/20 dark:border-zain-beige/20 py-4 text-zain-brown dark:text-zain-beige font-sans focus:outline-none focus:border-zain-red transition-colors placeholder:text-zain-brown/40 dark:placeholder:text-zain-beige/20 resize-none"
                                 />
                             </div>
 
@@ -62,7 +62,7 @@ const Contact = () => {
                     {/* Info Side */}
                     <div className="flex flex-col justify-between space-y-12">
                         <div>
-                            <p className="text-xl font-light text-zain-beige/80 leading-relaxed mb-10">
+                            <p className="text-xl font-light text-zain-brown/80 dark:text-zain-beige/80 leading-relaxed mb-10">
                                 Visit our flagship location in Bur Dubai for the full sensory experience.
                                 Authentic taste, modern vibe.
                             </p>
@@ -73,8 +73,8 @@ const Contact = () => {
                                         <MapPin size={24} />
                                     </div>
                                     <div>
-                                        <h4 className="text-zain-gold font-display font-bold text-xl mb-1">LOCATION</h4>
-                                        <p className="text-zain-beige/60">Khalid bin Walid Rd, Behind Admiral Plaza<br /> Bur Dubai, United Arab Emirates</p>
+                                        <h4 className="text-zain-red dark:text-zain-gold font-display font-bold text-xl mb-1">LOCATION</h4>
+                                        <p className="text-zain-brown/60 dark:text-zain-beige/60">Khalid bin Walid Rd, Behind Admiral Plaza<br /> Bur Dubai, United Arab Emirates</p>
                                     </div>
                                 </div>
 
@@ -83,8 +83,8 @@ const Contact = () => {
                                         <Phone size={24} />
                                     </div>
                                     <div>
-                                        <h4 className="text-zain-gold font-display font-bold text-xl mb-1">CALL US</h4>
-                                        <p className="text-zain-beige/60 font-mono">+971 50 122 9617</p>
+                                        <h4 className="text-zain-red dark:text-zain-gold font-display font-bold text-xl mb-1">CALL US</h4>
+                                        <p className="text-zain-brown/60 dark:text-zain-beige/60 font-mono">+971 50 122 9617</p>
                                     </div>
                                 </div>
 
@@ -93,15 +93,15 @@ const Contact = () => {
                                         <Mail size={24} />
                                     </div>
                                     <div>
-                                        <h4 className="text-zain-gold font-display font-bold text-xl mb-1">EMAIL</h4>
-                                        <p className="text-zain-beige/60">zaintea@gmail.com</p>
+                                        <h4 className="text-zain-red dark:text-zain-gold font-display font-bold text-xl mb-1">EMAIL</h4>
+                                        <p className="text-zain-brown/60 dark:text-zain-beige/60">zaintea@gmail.com</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         {/* Map Placeholder Graphic */}
-                        <div className="w-full h-48 bg-zain-brown/10 border border-zain-beige/5 relative overflow-hidden group">
+                        <div className="w-full h-48 bg-zain-brown/5 dark:bg-zain-brown/10 border border-zain-brown/5 dark:border-zain-beige/5 relative overflow-hidden group">
                             <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(208,0,0,0.05)_50%,transparent_75%)] bg-[length:20px_20px] pointer-events-none" />
                             <div className="absolute inset-0 rounded-xl overflow-hidden border border-zain-beige/10 transition-transform duration-300 group-hover:scale-105">
                                 <iframe

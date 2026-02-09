@@ -4,7 +4,7 @@ import aboutImage from '../assets/about-interior.png';
 
 const About = () => {
     return (
-        <section className="py-32 bg-transparent relative overflow-hidden text-zain-beige">
+        <section className="py-32 bg-transparent relative overflow-hidden text-zain-brown dark:text-zain-beige">
             <div className="container mx-auto px-6 relative z-10">
 
                 {/* Large Typographic Header */}
@@ -15,12 +15,12 @@ const About = () => {
                     viewport={{ once: true }}
                     className="mb-20"
                 >
-                    <h2 className="text-5xl md:text-[10rem] font-display font-bold text-zain-gold leading-none opacity-20 select-none absolute -top-10 left-0">
+                    <h2 className="text-5xl md:text-[10rem] font-display font-bold text-zain-red/10 dark:text-zain-gold dark:opacity-20 leading-none select-none absolute -top-10 left-0">
                         STORY
                     </h2>
                     <h2 className="text-4xl md:text-8xl font-kinetic font-bold relative z-10">
                         WHERE FLAVOR <br />
-                        <span className="stroke-text-light opacity-50">MEETS TASTE</span>
+                        <span className="text-transparent stroke-text-dark dark:stroke-text-light opacity-50">MEETS TASTE</span>
                     </h2>
                 </motion.div>
 
@@ -34,22 +34,22 @@ const About = () => {
                         viewport={{ once: true }}
                         className="space-y-8"
                     >
-                        <p className="text-2xl font-light leading-relaxed border-l-2 border-zain-gold pl-6">
+                        <p className="text-2xl font-light leading-relaxed border-l-2 border-zain-red dark:border-zain-gold pl-6">
                             Zain Tea isn't just a cafe. It's a culinary checkpoint in Bur Dubai.
                             We've reimagined the grill chicken experience for the modern palate.
                         </p>
-                        <p className="text-zain-beige/60 text-lg">
+                        <p className="text-zain-brown/70 dark:text-zain-beige/60 text-lg">
                             Precision grilling. Curated brewing. A vibe that sits somewhere between
                             nostalgia and tomorrow.
                         </p>
 
                         <div className="flex gap-12 pt-10">
                             <div>
-                                <h3 className="text-5xl font-display font-bold text-zain-gold">2022</h3>
+                                <h3 className="text-5xl font-display font-bold text-zain-red dark:text-zain-gold">2022</h3>
                                 <span className="text-sm tracking-widest uppercase opacity-60">Since</span>
                             </div>
                             <div>
-                                <h3 className="text-5xl font-display font-bold text-zain-gold">24/7</h3>
+                                <h3 className="text-5xl font-display font-bold text-zain-red dark:text-zain-gold">24/7</h3>
                                 <span className="text-sm tracking-widest uppercase opacity-60">Hours</span>
                             </div>
                         </div>
@@ -77,6 +77,9 @@ const About = () => {
             <style jsx>{`
         .stroke-text-light {
           -webkit-text-stroke: 1px currentColor;
+        }
+        .stroke-text-dark {
+           -webkit-text-stroke: 1px #2A1A10;
         }
       `}</style>
         </section>

@@ -10,7 +10,7 @@ import CustomCursor from './CustomCursor';
 
 const Layout = () => {
     return (
-        <div className="bg-zain-dark min-h-screen text-zain-beige font-sans selection:bg-zain-red selection:text-white cursor-none">
+        <div className="bg-zain-beige dark:bg-zain-dark min-h-screen text-zain-brown dark:text-zain-beige font-sans selection:bg-zain-red selection:text-white cursor-none transition-colors duration-500">
             <CustomCursor />
             <Navbar />
             <Hero />

@@ -25,20 +25,20 @@ const MenuItem = ({ item }) => {
         <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="group border-b border-zain-beige/10 pb-6" >
+            className="group border-b border-zain-brown/10 dark:border-zain-beige/10 pb-6" >
 
             <div className="flex items-center flex-wrap gap-4">
                 <div className="flex-1 min-w-0">
-                    <h3 className="text-sm font-display font-bold text-zain-beige truncate">
+                    <h3 className="text-sm font-display font-bold text-zain-brown dark:text-zain-beige truncate">
                         {item.name}
                     </h3>
-                    <p className="text-[11px] text-zain-beige/50 truncate">
+                    <p className="text-[11px] text-zain-brown/50 dark:text-zain-beige/50 truncate">
                         {item.desc}
                     </p>
                 </div>
 
                 {/* PRICE */}
-                <span className="text-sm font-bold text-zain-gold whitespace-nowrap">
+                <span className="text-sm font-bold text-zain-red dark:text-zain-gold whitespace-nowrap">
                     {selectedVariant ? `AED ${selectedVariant.price}` : item.price}
                 </span>
 
@@ -69,7 +69,7 @@ const MenuItem = ({ item }) => {
                     className={`flex items-center gap-1 px-3 py-2 rounded-md text-xs font-bold tracking-widest shrink-0 transition
       ${isAdded
                             ? "bg-green-600 text-white"
-                            : "bg-zain-gold text-black hover:bg-white"
+                            : "bg-zain-red dark:bg-zain-gold text-white dark:text-black hover:bg-black/10 dark:hover:bg-white"
                         }`}
                 >
                     <ShoppingBag size={14} />
@@ -89,7 +89,7 @@ const MenuItem = ({ item }) => {
                             onClick={() => setSelectedVariant(variant)}
                             className={`px-3 py-1 text-sm rounded-full border transition-all ${selectedVariant?.name === variant.name
                                 ? 'bg-zain-red border-zain-red text-white'
-                                : 'border-zain-beige/30 text-zain-beige/60 hover:border-zain-gold hover:text-zain-gold'
+                                : 'border-zain-brown/30 dark:border-zain-beige/30 text-zain-brown/60 dark:text-zain-beige/60 hover:border-zain-red dark:hover:border-zain-gold hover:text-zain-red dark:hover:text-zain-gold'
                                 }`}
                         >
                             {variant.name}
@@ -111,10 +111,10 @@ const MenuPreview = () => {
             <div className="container mx-auto px-6">
 
                 <div className="mb-16 text-center md:text-left">
-                    <h2 className="text-6xl md:text-[12rem] font-kinetic font-bold text-zain-red opacity-10 leading-none select-none absolute top-10 left-0 w-full text-center md:text-left z-0">
+                    <h2 className="text-6xl md:text-[12rem] font-kinetic font-bold text-zain-red/10 dark:text-zain-red dark:opacity-10 leading-none select-none absolute top-10 left-0 w-full text-center md:text-left z-0">
                         YOUR TASTE IS BACK
                     </h2>
-                    <h2 className="text-4xl md:text-7xl font-display font-bold text-zain-beige relative z-10">
+                    <h2 className="text-4xl md:text-7xl font-display font-bold text-zain-brown dark:text-zain-beige relative z-10">
                         OUR MENU
                     </h2>
                 </div>
@@ -129,7 +129,7 @@ const MenuPreview = () => {
                                 onClick={() => setActiveTab(cat.id)}
                                 className={`text-xl md:text-3xl font-kinetic font-bold whitespace-nowrap px-6 py-1 md:px-0 md:py-1 text-left transition-all duration-300 ${activeTab === cat.id
                                     ? 'text-zain-red scale-110 md:translate-x-4 pl-4 border-l-4 border-zain-red'
-                                    : 'text-zain-beige/30 hover:text-zain-beige'
+                                    : 'text-zain-brown/30 dark:text-zain-beige/30 hover:text-zain-brown dark:hover:text-zain-beige'
                                     }`}
                             >
                                 {cat.label}

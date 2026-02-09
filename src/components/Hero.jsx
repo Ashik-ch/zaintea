@@ -40,13 +40,13 @@ const Hero = () => {
     return (
         <section
             ref={sectionRef}
-            className="relative min-h-screen bg-[#0b0b0b] overflow-hidden pt-32 md:pt-0 flex items-center"
+            className="relative min-h-screen bg-zain-beige dark:bg-[#0b0b0b] overflow-hidden pt-32 md:pt-0 flex items-center transition-colors duration-500"
         >
             <div className="absolute -top-48 left-1/2 -translate-x-1/2 w-[900px] h-[900px] bg-zain-gold/10 blur-[160px]" />
             <motion.h1
                 style={{ opacity: bgOpacity }}
                 className="absolute bottom-10 md:bottom-10 w-full text-center
-                text-[20vw] md:text-[22vw] font-brush text-transparent stroke-text select-none z-0 pointer-events-none"
+                text-[20vw] md:text-[22vw] font-brush text-zain-brown/5 dark:text-transparent dark:stroke-text select-none z-0 pointer-events-none"
             >
                 Zaintea
             </motion.h1>
@@ -58,19 +58,19 @@ const Hero = () => {
                     transition={{ duration: 0.9, ease: "easeOut" }}
                     className="flex flex-col gap-4 md:gap-8 justify-center"
                 >
-                    <span className="tracking-[0.4em] text-xs md:text-sm text-zain-gold uppercase">
+                    <span className="tracking-[0.4em] text-xs md:text-sm text-zain-red dark:text-zain-gold uppercase">
                         Bur Dubai, UAE
                     </span>
 
-                    <h1 className="font-display text-5xl md:text-8xl leading-[0.9] text-zain-beige">
+                    <h1 className="font-display text-5xl md:text-8xl leading-[0.9] text-zain-brown dark:text-white">
                         ZAINTEA
                     </h1>
 
-                    <p className="text-xl md:text-3xl text-zain-gold italic">
+                    <p className="text-xl md:text-3xl text-zain-red dark:text-zain-gold italic">
                         anytime tea
                     </p>
 
-                    <p className="text-zain-beige/60 max-w-md text-lg font-brush leading-relaxed">
+                    <p className="text-zain-brown/70 dark:text-zain-beige/60 max-w-md text-lg font-brush leading-relaxed">
                         A cozy café serving freshly brewed tea, comfort food, and
                         signature grilled specials — perfect for any time of day.
                     </p>
@@ -79,11 +79,11 @@ const Hero = () => {
                             href="https://wa.me/971501229617?text=Hi%20Zaintea!"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center justify-center px-8 md:px-10 py-4 bg-zain-gold text-black font-semibold tracking-widest hover:scale-105 transition w-full md:w-auto text-center"
+                            className="inline-flex items-center justify-center px-8 md:px-10 py-4 bg-zain-red dark:bg-zain-gold text-white dark:text-black font-semibold tracking-widest hover:scale-105 transition w-full md:w-auto text-center"
                         >
                             ORDER NOW
                         </a>
-                        <a href="#menu" className="inline-flex items-center justify-center px-8 md:px-10 py-4 border border-zain-gold/40 text-zain-gold hover:bg-zain-gold/10 transition w-full md:w-auto text-center">
+                        <a href="#menu" className="inline-flex items-center justify-center px-8 md:px-10 py-4 border border-zain-red/40 dark:border-zain-gold/40 text-zain-red dark:text-zain-gold hover:bg-zain-red/10 dark:hover:bg-zain-gold/10 transition w-full md:w-auto text-center">
                             VIEW MENU
                         </a>
                     </div>
@@ -142,6 +142,9 @@ const Hero = () => {
             <style jsx>{`
                 .stroke-text {
                   -webkit-text-stroke: 1px rgba(255, 255, 255, 0.05);
+                }
+                :global(.dark) .stroke-text {
+                   -webkit-text-stroke: 1px rgba(255, 255, 255, 0.05);
                 }
             `}</style>
         </section>

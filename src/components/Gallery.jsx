@@ -16,7 +16,7 @@ const Gallery = () => {
 
             {/* Moving Background Text */}
             <div className="absolute top-0 left-0 w-full overflow-hidden opacity-5 pointer-events-none">
-                <h1 className="text-[8rem] md:text-[15rem] whitespace-nowrap font-kinetic font-bold text-zain-beige">
+                <h1 className="text-[8rem] md:text-[15rem] whitespace-nowrap font-kinetic font-bold text-zain-brown/5 dark:text-zain-beige">
                     VISUALS VISUALS VISUALS
                 </h1>
             </div>
@@ -30,7 +30,7 @@ const Gallery = () => {
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: idx * 0.1 }}
-                            className={`relative group overflow-hidden border border-zain-beige/10 hover:border-zain-gold transition-colors ${item.size}`}
+                            className={`relative group overflow-hidden border border-zain-brown/10 dark:border-zain-beige/10 hover:border-zain-red dark:hover:border-zain-gold transition-colors ${item.size}`}
                         >
                             <img
                                 src={item.src}
@@ -47,8 +47,8 @@ const Gallery = () => {
                         </motion.div>
                     ))}
                     {/* Filler for grid */}
-                    <div className="hidden md:block col-span-1 row-span-1 bg-zain-gold flex items-center justify-center group overflow-hidden cursor-pointer">
-                        <span className="text-black font-kinetic text-5xl font-bold group-hover:scale-125 transition-transform">
+                    <div className="hidden md:block col-span-1 row-span-1 bg-zain-red dark:bg-zain-gold flex items-center justify-center group overflow-hidden cursor-pointer">
+                        <span className="text-white dark:text-black font-kinetic text-5xl font-bold group-hover:scale-125 transition-transform">
                             MORE
                         </span>
                     </div>
