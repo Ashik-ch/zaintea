@@ -2,7 +2,22 @@ import React, { useEffect, useState } from 'react';
 import { Sun, Moon } from 'lucide-react';
 
 const ThemeToggle = () => {
-    const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark');
+    const getDefaultTheme = () => {
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme) return savedTheme;
+
+        const hour = new Date().getHours();
+
+        // Dark mode from 6PM to 6AM
+        if (hour >= 18 || hour < 6) {
+            return "dark";
+        }
+
+        return "light";
+    };
+
+    const [theme, setTheme] = useState(getDefaultTheme);
+
 
     useEffect(() => {
         if (theme === 'dark') {

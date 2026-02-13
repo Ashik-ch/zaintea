@@ -11,11 +11,11 @@ const Footer = () => {
             <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-10">
 
                 <div className="text-center md:text-left">
-                    <h2 className="text-[5rem] md:text-[8rem] font-kinetic font-bold leading-none text-zain-red dark:text-zain-gold">
-                        ZAIN
+                    <h2 className="text-[4rem] md:text-[5rem] font-kinetic font-bold leading-none text-zain-red dark:text-zain-gold">
+                        ZAINTEA
                     </h2>
                     <p className="font-sans text-sm tracking-widest opacity-50 pl-2">
-                        EST. 2024 • BUR DUBAI
+                        EST. 2022 • BUR DUBAI
                     </p>
                 </div>
 

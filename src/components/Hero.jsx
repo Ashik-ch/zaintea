@@ -112,8 +112,8 @@ const Hero = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         className="absolute -bottom-6 left-1/2 -translate-x-1/2
-                        bg-black/60 backdrop-blur-xl px-6 py-2 rounded-full
-                        flex items-center gap-3 border border-white/10 shadow-lg whitespace-nowrap"
+  bg-black/60 backdrop-blur-xl px-6 py-2 rounded-full
+  flex items-center gap-3 border border-white/10 shadow-lg"
                     >
                         <motion.span
                             animate={{ opacity: [0.3, 1, 0.3] }}
@@ -123,18 +123,20 @@ const Hero = () => {
                         <span className="text-zain-beige/60 text-xs uppercase tracking-widest">
                             Now Serving
                         </span>
-                        <AnimatePresence mode="wait">
-                            <motion.span
-                                key={menuItems[active]}
-                                initial={{ y: 10, opacity: 0 }}
-                                animate={{ y: 0, opacity: 1 }}
-                                exit={{ y: -10, opacity: 0 }}
-                                transition={{ duration: 0.25 }}
-                                className="text-zain-gold text-sm font-medium"
-                            >
-                                {menuItems[active]}
-                            </motion.span>
-                        </AnimatePresence>
+                        <div className="w-36 text-center overflow-hidden">
+                            <AnimatePresence mode="wait">
+                                <motion.span
+                                    key={menuItems[active]}
+                                    initial={{ y: 10, opacity: 0 }}
+                                    animate={{ y: 0, opacity: 1 }}
+                                    exit={{ y: -10, opacity: 0 }}
+                                    transition={{ duration: 0.25 }}
+                                    className="block text-zain-gold text-sm font-medium whitespace-nowrap"
+                                >
+                                    {menuItems[active]}
+                                </motion.span>
+                            </AnimatePresence>
+                        </div>
                     </motion.div>
                 </motion.div>
             </div>
