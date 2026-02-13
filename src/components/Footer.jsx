@@ -1,4 +1,5 @@
 import React from 'react';
+import pkg from '../../package.json';
 
 const Footer = () => {
     const socials = [
@@ -35,7 +36,7 @@ const Footer = () => {
                 <div className="flex flex-col items-center justify-center gap-2 md:flex-row md:gap-6">
                     {/* Copyright Section */}
                     <p className="text-xs font-sans tracking-[0.2em] uppercase opacity-40">
-                        © {new Date().getFullYear()} Zaintea. All rights reserved.
+                        V{pkg.version} © {new Date().getFullYear()} Zaintea. All rights reserved.
                     </p>
 
                     {/* Divider (Visible only on desktop) */}
