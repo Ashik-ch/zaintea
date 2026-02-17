@@ -22,6 +22,7 @@ export default {
         sans: ['Inter', 'sans-serif'],
         display: ['Antonio', 'sans-serif'], // Tall, condensed
         kinetic: ['Big Shoulders Display', 'sans-serif'], // Extra condensed for huge text
+        arabic: ['"Aref Ruqaa"', 'serif'],
       }
     },
   },
