@@ -41,8 +41,12 @@ const Hero = () => {
     return (
         <section
             ref={sectionRef}
-            className="relative min-h-screen bg-gradient-to-b from-[#0B0F2F] via-[#1A1446] to-[#2C1A5A] overflow-hidden pt-32 md:pt-0 flex items-center text-white"
-        >
+            className="relative min-h-screen  overflow-hidden pt-32 md:pt-0 flex items-center text-white"
+            style={{
+                backgroundColor: "#0B0F2F",
+                backgroundImage:
+                    "linear-gradient(to bottom, #0B0F2F, #1A1446, #2C1A5A)",
+            }}>
             {/* 🌙 Ramadan Glow Background */}
             <div className="absolute inset-0 bg-gradient-to-r from-purple-900/40 via-transparent to-amber-900/30" />
 
@@ -153,7 +157,7 @@ const Hero = () => {
                             className="w-2 h-2 rounded-full bg-yellow-300"
                         />
                         <span className="text-white/60 text-xs uppercase tracking-widest">
-                            Iftar Special
+                            Now Serving
                         </span>
 
                         <div className="w-36 text-center overflow-hidden">

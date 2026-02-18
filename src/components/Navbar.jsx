@@ -35,9 +35,10 @@ const Navbar = () => {
                     }`}
             >
                 {/* Logo */}
-                <a href="#" className="text-2xl md:text-3xl font-display font-extrabold text-zain-brown dark:text-zain-beige tracking-tighter hover:scale-105 transition-transform whitespace-nowrap">
+                <a href="#" className="text-2xl md:text-3xl font-display font-extrabold text-yellow-500 dark:text-zain-beige tracking-tighter hover:scale-105 transition-transform whitespace-nowrap">
                     ZAIN <span className="text-zain-red">TEA</span>
                 </a>
+                <a href="ramadan" className="text-xs font-sans font-bold tracking-[0.3em] text-yellow-500 dark:text-zain-beige hover:text-zain-red dark:hover:text-zain-gold transition-all relative group">Ramadan Special</a>
 
                 {/* Desktop Links */}
                 <div className="hidden md:flex gap-10 items-center">
@@ -45,7 +46,7 @@ const Navbar = () => {
                         <a
                             key={item}
                             href={`#${item.toLowerCase()}`}
-                            className="text-xs font-sans font-bold tracking-[0.3em] text-zain-brown dark:text-zain-beige hover:text-zain-red dark:hover:text-zain-gold transition-all relative group"
+                            className="text-xs font-sans font-bold tracking-[0.3em] text-yellow-500 dark:text-zain-beige hover:text-zain-red dark:hover:text-zain-gold transition-all relative group"
                         >
                             {item}
                             <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-zain-red dark:bg-zain-gold transition-all group-hover:w-full"></span>
