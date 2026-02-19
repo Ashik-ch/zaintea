@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
-import { Moon } from "lucide-react";
+import PrayerWidget from "./PrayerWidget";
 
 import grill from "../assets/hero-chicken.png";
 import club from "../assets/menu-club.png";
@@ -71,6 +71,8 @@ const Hero = () => {
                 transition={{ duration: 6, repeat: Infinity }}
                 className="absolute top-20 right-[10%] w-40 h-40 bg-yellow-300/10 rounded-full blur-[100px]"
             />
+
+            <PrayerWidget />
 
             <div className="relative z-10 container mx-auto px-6 grid md:grid-cols-2 gap-8 md:gap-16 items-center w-full">
                 {/* LEFT CONTENT */}
