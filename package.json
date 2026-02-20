@@ -1,9 +1,9 @@
 {
   "name": "zaintea",
   "private": true,
-  "version": "1.1",
+  "version": "1.2",
   "type": "module",
-  "homepage": "https://ashik-ch.github.io/zaintea",
+  "homepage": "https://zainteacafe.com",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
