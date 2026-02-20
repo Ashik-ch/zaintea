@@ -29,15 +29,16 @@ const PrayerWidget = () => {
                 );
 
                 const t = res.data.data.timings;
-                const cleaned = {
-                    Fajr: t.Fajr,
-                    Dhuhr: t.Dhuhr,
-                    Asr: t.Asr,
-                    Maghrib: t.Maghrib,
-                    Isha: t.Isha,
+
+                const adjusted = {
+                    Fajr: adjustTime(t.Fajr, 1),
+                    Dhuhr: adjustTime(t.Dhuhr, 2),
+                    Asr: adjustTime(t.Asr, 2),
+                    Maghrib: adjustTime(t.Maghrib, 3),
+                    Isha: adjustTime(t.Isha, -43),
                 };
 
-                setTimings(cleaned);
+                setTimings(adjusted);
             } catch (err) {
                 console.error("Error fetching prayer times:", err);
             }
@@ -49,6 +50,17 @@ const PrayerWidget = () => {
     // -----------------------------------
     // MAIN TIMER LOGIC
     // -----------------------------------
+    const adjustTime = (timeString, minutesToAdd) => {
+        const [h, m] = timeString.split(":").map(Number);
+
+        const date = new Date();
+        date.setHours(h, m + minutesToAdd, 0);
+
+        const hours = String(date.getHours()).padStart(2, "0");
+        const minutes = String(date.getMinutes()).padStart(2, "0");
+
+        return `${hours}:${minutes}`;
+    };
     useEffect(() => {
         if (!timings) return;
 
@@ -58,6 +70,8 @@ const PrayerWidget = () => {
             let upcomingTime = null;
 
             for (let key of PRAYER_KEYS) {
+                console.log("timings", timings);
+
                 const [h, m] = timings[key].split(":");
                 const prayerDate = new Date();
                 prayerDate.setHours(parseInt(h), parseInt(m), 0);

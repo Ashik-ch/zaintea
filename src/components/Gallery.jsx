@@ -35,7 +35,7 @@ const Gallery = () => {
                             <img
                                 src={item.src}
                                 alt={item.title}
-                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
+                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 dark:grayscale group-hover:grayscale-0"
                             />
                             <div className="absolute inset-0 bg-black/50 group-hover:bg-transparent transition-colors duration-500" />
 

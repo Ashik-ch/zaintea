@@ -67,7 +67,7 @@ const About = () => {
                         <img
                             src={aboutImage}
                             alt="Futuristic Interior"
-                            className="relative z-10 w-full grayscale hover:grayscale-0 transition-all duration-700 object-cover h-[500px]"
+                            className="relative z-10 w-full object-cover h-[500px] dark:grayscale dark:hover:grayscale-0 transition-all duration-700"
                         />
                     </motion.div>
 
