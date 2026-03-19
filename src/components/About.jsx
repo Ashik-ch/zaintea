@@ -45,7 +45,7 @@ const About = () => {
 
                         <div className="flex gap-12 pt-10">
                             <div>
-                                <h3 className="text-5xl font-display font-bold text-zain-red dark:text-zain-gold">2022</h3>
+                                <h3 className="text-5xl font-display font-bold text-zain-red dark:text-zain-gold">2021</h3>
                                 <span className="text-sm tracking-widest uppercase opacity-60">Since</span>
                             </div>
                             <div>

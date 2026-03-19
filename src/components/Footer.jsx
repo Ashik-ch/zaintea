@@ -1,5 +1,6 @@
 import React from 'react';
 import pkg from '../../package.json';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
     const socials = [
@@ -16,7 +17,7 @@ const Footer = () => {
                         ZAINTEA
                     </h2>
                     <p className="font-sans text-sm tracking-widest opacity-50 pl-2">
-                        EST. 2022 • BUR DUBAI
+                        EST. 2021 • BUR DUBAI
                     </p>
                 </div>
 
@@ -36,7 +37,10 @@ const Footer = () => {
                 <div className="flex flex-col items-center justify-center gap-2 md:flex-row md:gap-6">
                     {/* Copyright Section */}
                     <p className="text-xs font-sans tracking-[0.2em] uppercase opacity-40">
-                        V{pkg.version} © {new Date().getFullYear()} Zaintea. All rights reserved.
+                        V{pkg.version} © {new Date().getFullYear()}
+                        <Link to="/landing" className="hover:text-zain-red dark:hover:text-zain-gold">
+                            Zaintea
+                        </Link>. All rights reserved.
                     </p>
 
                     {/* Divider (Visible only on desktop) */}
