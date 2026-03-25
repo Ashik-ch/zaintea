@@ -47,15 +47,15 @@ const Testimonials = () => {
                         <div className="rounded-2xl border border-zain-brown/10 dark:border-zain-beige/10 bg-white/40 dark:bg-zain-brown/10 backdrop-blur-lg p-6 overflow-hidden">
                             <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-zain-red/60 via-transparent to-zain-red/60 dark:from-zain-gold/60 dark:to-zain-gold/60" />
                             <div className="relative">
-                                <div className="flex items-center gap-3 mb-3">
+                                <div className="-center gap-3 mb-3">
+                                    <div className="text-sm font-semibold text-zain-brown/70 dark:text-zain-beige/60">
+                                        Drop us a quick review — it means a lot 🙌
+                                    </div>
                                     <div className="flex items-center gap-1 text-zain-red dark:text-zain-gold">
                                         {Array.from({ length: 5 }).map((_, idx) => (
                                             <Star key={idx} size={16} className="fill-current opacity-80" />
                                         ))}
                                     </div>
-                                    <span className="text-sm font-semibold text-zain-brown/70 dark:text-zain-beige/60">
-                                        Real visitor feedback
-                                    </span>
                                 </div>
                                 <div className="flex justify-center items-center">
                                     <img src={testimonialsImage} alt="Testimonials" className="w-1/2 h-1/2 object-cover rounded-2xl" />
