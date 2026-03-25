@@ -88,34 +88,72 @@ const Testimonials = () => {
                         </div>
                     </div>
 
-                    <div className="lg:col-span-8 ">
-                        <div className="relative rounded-2xl overflow-hidden border border-zain-brown/90 dark:border-zain-beige/90 bg-black/10">
-                            {/* Futuristic scanline + glow */}
-                            <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgb(208, 194, 0)_1px,transparent_1px)] bg-[length:6px_6px] opacity-20" />
-                            <div className="absolute -bottom-20 -left-24 w-[420px] h-[420px] bg-zain-gold/40 blur-[60px] pointer-events-none" />
+                    <div className="lg:col-span-8 relative">
 
-                            <div className="relative z-10">
+                        {/* 🌌 Ambient Background Glow */}
+                        <div className="absolute -inset-4 bg-gradient-to-br from-zain-gold/10 via-transparent to-zain-red/10 blur-2xl opacity-50" />
+
+                        <div className="relative rounded-3xl overflow-hidden border border-white/10 bg-black/40 backdrop-blur-xl shadow-[0_0_60px_rgba(0,0,0,0.6)]">
+
+                            {/* 🔳 Subtle Grid Pattern */}
+                            <div
+                                className="absolute inset-0 opacity-[0.05]"
+                                style={{
+                                    backgroundImage: `radial-gradient(circle, rgba(255,255,255,0.4) 1px, transparent 1px)`,
+                                    backgroundSize: "20px 20px",
+                                }}
+                            />
+
+                            {/* ✨ Moving Light Sweep */}
+                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] animate-[sweep_6s_linear_infinite]" />
+
+                            {/* 🌟 Corner Glow Effects */}
+                            <div className="absolute -top-20 -right-20 w-64 h-64 bg-zain-gold/20 blur-[100px]" />
+                            <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-zain-red/20 blur-[100px]" />
+
+                            {/* 💡 Content */}
+                            <div className="relative z-10 p-6 md:p-10">
+
                                 {featurableWidgetId ? (
                                     <ReactGoogleReviews
                                         layout="carousel"
                                         featurableId={featurableWidgetId}
                                         theme="dark"
-                                        // Hide empty reviews to avoid blank slides if the widget returns them.
                                         hideEmptyReviews
                                     />
                                 ) : (
-                                    <div className="p-8">
-                                        <div className="text-zain-red dark:text-zain-gold font-bold mb-2">
-                                            Configure live reviews
+                                    <div className="flex flex-col items-center text-center py-16">
+
+                                        {/* Futuristic Loader */}
+                                        <div className="w-16 h-16 rounded-full border border-white/20 flex items-center justify-center mb-6 animate-spin-slow">
+                                            <div className="w-10 h-10 rounded-full border border-zain-gold" />
                                         </div>
-                                        <div className="text-sm text-zain-brown/70 dark:text-zain-beige/70 leading-relaxed">
-                                            Set <span className="font-mono">VITE_FEATURABLE_WIDGET_ID</span> in your Vite env
-                                            so we can fetch real Google customer reviews (no dummy data).
-                                        </div>
+
+                                        <h4 className="text-zain-gold font-mono tracking-widest uppercase mb-3">
+                                            CONFIG REQUIRED
+                                        </h4>
+
+                                        <p className="text-xs text-white/50 max-w-xs leading-relaxed">
+                                            Initialize <span className="font-mono text-white/80">VITE_FEATURABLE_WIDGET_ID</span> to enable live review rendering.
+                                        </p>
                                     </div>
                                 )}
+
                             </div>
                         </div>
+
+                        {/* ⚙️ Animations */}
+                        <style dangerouslySetInnerHTML={{
+                            __html: `
+  @keyframes sweep {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+  .animate-spin-slow {
+    animation: spin 10s linear infinite;
+  }
+`}} />
+
                     </div>
                 </div>
             </div>
