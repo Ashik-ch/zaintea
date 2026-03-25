@@ -24,7 +24,7 @@ const Navbar = () => {
         opened: { x: 0, opacity: 1 }
     };
 
-    const navLinks = ['ABOUT', 'MENU', 'CONTACT'];
+    const navLinks = ['ABOUT', 'MENU', 'CONTACT', 'REVIEWS'];
 
     return (
         <>
@@ -44,7 +44,7 @@ const Navbar = () => {
                         <a
                             key={item}
                             href={`#${item.toLowerCase()}`}
-                            className="text-xs font-sans font-bold tracking-[0.3em] text-yellow-500 dark:text-zain-beige hover:text-zain-red dark:hover:text-zain-gold transition-all relative group"
+                            className="text-xs font-sans font-bold tracking-[0.3em] text-yellow-800 dark:text-zain-beige hover:text-zain-red dark:hover:text-zain-gold transition-all relative group"
                         >
                             {item}
                             <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-zain-red dark:bg-zain-gold transition-all group-hover:w-full"></span>

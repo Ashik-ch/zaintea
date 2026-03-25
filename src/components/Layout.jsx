@@ -3,6 +3,7 @@ import Navbar from './Navbar';
 import Hero from './Hero';
 import About from './About';
 import MenuPreview from './MenuPreview';
+import Testimonials from './Testimonials';
 import Gallery from './Gallery';
 import Contact from './Contact';
 import Footer from './Footer';
@@ -16,6 +17,7 @@ const Layout = () => {
             <Hero />
             <About />
             <MenuPreview />
+            <Testimonials />
             <Gallery />
             <Contact />
             <Footer />
