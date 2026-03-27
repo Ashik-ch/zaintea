@@ -21,3 +21,5 @@ build/index.html → build/404.html
 - Always push main branch
 - Do NOT delete CNAME
 - Run npm run deploy (not manual build)
+
+## Google map review -> https://featurable.com/
