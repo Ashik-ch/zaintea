@@ -1,15 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { categories, menuData } from '../data/menuData';
 import { useCart } from '../context/CartContext';
 import { Plus, Minus, ShoppingBag } from 'lucide-react';
 import Cart from './Cart';
+import grillChickenImg from '../assets/Grillchicken.jpg';
 
 const MenuItem = ({ item }) => {
     const { addToCart } = useCart();
     const [quantity, setQuantity] = useState(1);
     const [selectedVariant, setSelectedVariant] = useState(item.variants ? item.variants[0] : null);
     const [isAdded, setIsAdded] = useState(false);
+    const [showPopup, setShowPopup] = useState(false);
+    const [popupKey, setPopupKey] = useState(0);
+    const addedTimeoutRef = useRef(null);
+    const popupTimeoutRef = useRef(null);
 
     const handleIncrement = () => setQuantity(q => q + 1);
     const handleDecrement = () => setQuantity(q => Math.max(1, q - 1));
@@ -17,7 +22,14 @@ const MenuItem = ({ item }) => {
     const handleAdd = () => {
         addToCart(item, quantity, selectedVariant);
         setIsAdded(true);
-        setTimeout(() => setIsAdded(false), 2000);
+        setPopupKey(k => k + 1); // retrigger animation for rapid clicks
+        setShowPopup(true);
+
+        if (addedTimeoutRef.current) window.clearTimeout(addedTimeoutRef.current);
+        if (popupTimeoutRef.current) window.clearTimeout(popupTimeoutRef.current);
+
+        addedTimeoutRef.current = window.setTimeout(() => setIsAdded(false), 2000);
+        popupTimeoutRef.current = window.setTimeout(() => setShowPopup(false), 9000);
         setQuantity(1); // Reset quantity after adding
     };
 
@@ -73,7 +85,7 @@ const MenuItem = ({ item }) => {
                         }`}
                 >
                     <ShoppingBag size={14} />
-                    {isAdded ? "ADDED" : "ADD"}
+                    {isAdded ? "ADDED" : "Order Now"}
                 </button>
 
             </div>
@@ -97,6 +109,67 @@ const MenuItem = ({ item }) => {
                     ))}
                 </div>
             )}
+
+            <AnimatePresence>
+                {showPopup && (
+                    <motion.div
+                        key={popupKey}
+                        className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/70 backdrop-blur-md p-4 md:p-8"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0, transition: { duration: 5 } }}
+                        onClick={() => setShowPopup(false)}
+                    >
+                        {/* Subtle Cinematic Vignette Overlay */}
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,black_100%)] pointer-events-none opacity-60" />
+
+                        <motion.div
+                            className="relative max-w-[800px] w-full h-[70vh] md:h-[80vh] flex flex-col items-center justify-center"
+                            initial={{ opacity: 0, scale: 0.9, y: 30 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            exit={{ opacity: 0, scale: 0.95, y: 15 }}
+                            transition={{
+                                type: 'spring',
+                                stiffness: 260,
+                                damping: 26, // Smooth, no aggressive bouncy jitter
+                                mass: 0.8
+                            }}
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            {/* Full-Screen Image Container */}
+                            <div className="relative w-full h-full rounded-3xl overflow-hidden shadow-[0_35px_60px_-15px_rgba(0,0,0,0.7)] group">
+                                <img
+                                    src={grillChickenImg}
+                                    alt="Grill chicken"
+                                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
+                                />
+
+                                {/* Gentle dark gradient over the bottom of image so text pops */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
+                            </div>
+
+                            {/* Cinematic Toaster Notification */}
+                            <motion.div
+                                className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-white/10 backdrop-blur-lg border border-white/20 rounded-full py-3 px-8 text-white tracking-wide text-sm font-semibold shadow-2xl flex items-center gap-2 whitespace-nowrap"
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.2, duration: 0.4 }}
+                            >
+                                <span className="h-2 w-2 bg-emerald-400 rounded-full animate-pulse" />
+                                Added to cart
+                            </motion.div>
+
+                            {/* Cinematic Close Button (Top Right) */}
+                            <button
+                                onClick={() => setShowPopup(false)}
+                                className="absolute top-4 right-4 text-white/70 hover:text-white bg-black/40 hover:bg-black/60 backdrop-blur-md h-10 w-10 flex items-center justify-center rounded-full transition-all duration-200 border border-white/10"
+                            >
+                                ✕
+                            </button>
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </motion.div>
     );
 };
