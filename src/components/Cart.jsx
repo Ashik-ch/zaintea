@@ -19,7 +19,7 @@ const Cart = () => {
             message += `• ${item.name}${variantText} × ${item.quantity}\n`;
         });
 
-        message += `\nPlease confirm availability and total price in whatsapp.\nThank you.`;
+        message += `\nPlease confirm availability.\nThank you.`;
 
         const encodedMessage = encodeURIComponent(message);
         window.open(`https://wa.me/971501229617?text=${encodedMessage}`, '_blank');

@@ -4,7 +4,7 @@ import aboutImage from '../assets/about-interior.png';
 
 const About = () => {
     return (
-        <section className="py-32 bg-transparent relative overflow-hidden text-zain-brown dark:text-zain-beige">
+        <section   id="about" className="py-32 bg-transparent relative overflow-hidden text-zain-brown dark:text-zain-beige">
             <div className="container mx-auto px-6 relative z-10">
 
                 {/* Large Typographic Header */}

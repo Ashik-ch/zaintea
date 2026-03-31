@@ -1,38 +1,44 @@
 import React, { useEffect, useState } from 'react';
-import { Flame, Zap, Coffee, Clock, ChevronRight } from 'lucide-react';
+import { Flame, Zap, Coffee, Clock, ChevronRight, Plus } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useCart } from '../context/CartContext';
+import Cart from './Cart';
 
 const ZainTeaMenu = () => {
+  const { addToCart } = useCart();
+
   const specials = [
-    { id: 1, name: "BAZOOKA", desc: "Chicken Chilli, Cheetos, cheese, hot sauce", price: "7", type: "spicy" },
-    { id: 2, name: "ZAROONI", desc: "Zinger, Amwaj chips, cheese, mayo", price: "7", type: "classic" },
-    { id: 3, name: "RAYYAN", desc: "Zinger, Amwaj chips, fries, cheese", price: "7", type: "classic" },
-    { id: 4, name: "FRANCISCO", desc: "Chilli chicken, Amwaj, cheese, mayo", price: "7", type: "classic" },
-    { id: 4, name: "Nuggets", desc: "Chicken Nuggets, Amwaj, cheese, mayo", price: "7", type: "classic" },
-    { id: 5, name: "MAZMI", desc: "Zinger, Tikka, Oman chips, potato, cheese", price: "8", type: "pro" },
-    { id: 6, name: "ROYAL MIX", desc: "Popcorn chicken, Tikka, fries, Oman chips, cheese", price: "8", type: "pro" },
-    { id: 7, name: "ZAIN SPECIAL", desc: "Chilli chicken, Sheesh Tawook, Oman chips", price: "8", type: "star" },
+    { id: 1, name: "BAZOOKA", desc: "Chicken Chilli, Cheetos, cheese, hot sauce", price: "7", },
+    { id: 2, name: "FRANCISCO", desc: "Chicken Chilli, Amwaj, cheese, mayo", price: "7", },
+    { id: 3, name: "RAYYAN", desc: "Zinger, Amwaj chips, fries, cheese", price: "7", },
+    { id: 4, name: "ZAROONI", desc: "Zinger, Amwaj chips, cheese, hot suace", price: "7", },
+    { id: 5, name: "MAZMI", desc: "Zinger, Tikka, Oman chips, fries, cheese", price: "8", },
+    { id: 6, name: "ROYAL MIX", desc: "Popcorn chicken, Tikka, fries, Oman chips, cheese", price: "8", },
+    { id: 7, name: "ZAIN SPECIAL", desc: "Chicken Chilli, Sheesh Tawook, Oman chips, cheese", price: "8", },
   ];
 
   const classics = [
-    { name: "Oman Crunch", p: "4", sl: "4", sm: "4" },
     { name: "Omelette", p: "5", sl: "6", sm: "6" },
-    { name: "Vegetable", p: "5", sl: "6", sm: "6" },
-    { name: "Falafel", p: "5", sl: "6", sm: "6" },
+    { name: "Vegetable", p: "6", sl: "6", sm: "6" },
+    { name: "Falafel", p: "6", sl: "6", sm: "6" },
     { name: "Chicken Chilli", p: "6", sl: "6", sm: "6" },
     { name: "Hotdog", p: "6", sl: "6", sm: "6" },
     { name: "Zinger", p: "7", sl: "7", sm: "7" },
-    { name: "Kebab (C/B)", p: "7", sl: "7", sm: "7" }, 
+    { name: "Tikka", p: "7", sl: "7", sm: "7" },
+    { name: "Nuggets", p: "7", sl: "7", sm: "7" },
+    { name: "Kebab (C/B)", p: "7", sl: "7", sm: "7" },
   ];
 
   return (
-    <div className="h-screen w-full bg-[#050505] overflow-hidden font-sans text-white flex flex-col px-5 pt-2">
+    <div className="h-screen w-full bg-[#050505] overflow-hidden font-sans text-white flex flex-col px-5 pt-2 relative">
+      <Cart />
       
       {/* 1. TOP HEADER BAR */}
       <div className="flex justify-between items-center border-b border-white/10 pb-4 mb-4">
         <div className="flex items-center gap-6">
-          <h1 className="text-6xl font-black italic tracking-tighter uppercase leading-none">
-            ZAIN <span className="text-red-600 drop-shadow-[0_0_10px_rgba(220,38,38,0.4)]">TEA</span>
+          <h1 className="text-4xl font-black italic tracking-tighter uppercase leading-none">
+            <a href="/">
+            ZAIN <span className="text-red-600 drop-shadow-[0_0_10px_rgba(220,38,38,0.4)]">TEA</span></a>
           </h1>
           <div className="bg-red-600/10 border border-red-600/20 px-3 py-1 rounded text-red-500 text-[10px] font-black tracking-widest uppercase italic">
             Anytime Tea
@@ -49,7 +55,7 @@ const ZainTeaMenu = () => {
               <span className="text-xs font-black uppercase tracking-[0.2em] text-green-500">Open 24/7</span>
             </div>
             <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Bur Dubai</p>
-          </div>
+     </div>
         </div>
       </div>
 
@@ -66,14 +72,37 @@ const ZainTeaMenu = () => {
           
           <div className="grid grid-cols-2 gap-4">
             {specials.map((s) => (
-              <div key={s.id} className="bg-[#111] border border-white/5 p-4 rounded-3xl flex justify-between items-center relative overflow-hidden group">
+              <div
+                key={s.id}
+                className="bg-[#111] border border-white/5 p-4 rounded-3xl flex justify-between items-center relative overflow-hidden group"
+              >
                 <div className="relative z-10">
                   <h3 className="text-xl font-black italic uppercase text-red-500">{s.name}</h3>
                   <p className="text-[10px] text-gray-500 uppercase font-bold tracking-tight">{s.desc}</p>
                 </div>
-                <div className="text-right relative z-10">
-                  <span className="text-2xl font-black">{s.price}</span>
-                  <span className="block text-[8px] font-bold text-gray-600 uppercase">AED</span>
+                <div className="flex items-center gap-3 relative z-10">
+                  <div className="text-right">
+                    <span className="text-2xl font-black">{s.price}</span>
+                    <span className="block text-[8px] font-bold text-gray-600 uppercase">AED</span>
+                  </div>
+                  <button
+                    onClick={() =>
+                      addToCart(
+                        {
+                          id: s.id,
+                          name: s.name,
+                          desc: s.desc,
+                          price: `AED ${s.price}`,
+                        },
+                        1,
+                        null
+                      )
+                    }
+                    className="w-7 h-7 flex items-center justify-center rounded-lg bg-red-600 text-white hover:bg-red-500 transition-colors text-xs font-black"
+                    aria-label={`Add ${s.name} to cart`}
+                  >
+                    <Plus size={16} />
+                  </button>
                 </div>
                 {/* Visual Flair */}
                 <div className="absolute -right-2 -bottom-2 opacity-5 text-white group-hover:opacity-20 transition-opacity">
@@ -99,68 +128,131 @@ const ZainTeaMenu = () => {
       />
 
       {/* 2. INNER CONTENT BOX */}
-      <div className="relative z-10 bg-[#0a0a0a] rounded-[1.4rem] p-6 flex justify-between items-center border border-white/5 shadow-2xl">
-        <div className="flex items-center gap-6">
-          <div className="relative">
-            {/* Pulsing Steam Effect */}
-            <motion.div 
-              className="absolute -top-2 left-1/2 -translate-x-1/2 text-white/20"
-              animate={{ y: [-5, -15], opacity: [0, 0.5, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            >
-              ~~
-            </motion.div>
-            <Coffee size={54} className="text-red-600 drop-shadow-[0_0_8px_rgba(220,38,38,0.5)]" />
-          </div>
+      <div className="relative z-10 bg-gradient-to-br from-[#0a0a0a] to-[#111] 
+rounded-3xl p-4 md:p-6 flex flex-col md:flex-row justify-between items-start md:items-center 
+border border-white/10 backdrop-blur-xl shadow-[0_20px_60px_rgba(0,0,0,0.6)] overflow-hidden">
 
-          <div>
-            {/* Typing Effect for Header */}
-            <motion.h4 
-              className="text-4xl font-black italic uppercase leading-none tracking-tighter text-white"
-            >
-              {"FRESH KARAK".split("").map((char, index) => (
-                <motion.span
-                  key={index}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: index * 0.1, repeat: Infinity, repeatDelay: 5 }}
-                >
-                  {char}
-                </motion.span>
-              ))}
-            </motion.h4>
-            
-            <div className="flex items-center gap-2 mt-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse" />
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-red-200">
-                Starting from 1 AED  
-              </p>
-            </div>
-          </div>
-        </div>
+  {/* 🔥 Subtle Glow Background */}
+  <div className="absolute -top-20 -left-20 w-72 h-72 bg-red-600/10 blur-[120px] rounded-full" />
+  <div className="absolute -bottom-20 -right-20 w-72 h-72 bg-yellow-500/10 blur-[120px] rounded-full" />
 
-        {/* 3. NEON 24/7 BADGE */}
-        <motion.div 
-  animate={{ 
-    boxShadow: ["0 0 0px rgba(220,38,38,0)", "0 0 30px rgba(220,38,38,0.3)", "0 0 0px rgba(220,38,38,0)"] 
-  }}
-  transition={{ duration: 2, repeat: Infinity }}
-  className="bg-red-600/10 px-8 py-4 rounded-3xl border border-red-600/40 flex flex-col items-center justify-center min-w-[160px]"
+  {/* LEFT CONTENT */}
+  <div className="flex flex-col gap-4 z-10">
+
+   {/* 🌐 Quick Info Strip */}
+    <div className="flex flex-wrap items-center gap-4 text-xs font-semibold uppercase tracking-[0.2em] text-gray-300 mt-2">
+
+      <span className="flex items-center gap-2">
+        <span className="h-2 w-2 rounded-full bg-green-500 animate-pulse" />
+        +971 50 122 9617
+      </span>
+
+      <span className="opacity-30">|</span>
+
+      <span className="flex items-center gap-2">
+        <span className="h-2 w-2 rounded-full bg-pink-400" />
+        @zaintea_cafe
+      </span>
+
+      <span className="opacity-30">|</span>
+
+      <span className="flex items-center gap-2">
+        <span className="h-2 w-2 rounded-full bg-blue-400" />
+        zainteacafe.com
+      </span>
+
+    </div>
+
+    {/* 🚀 CTA */}
+    <div className="mt-6 flex flex-wrap gap-3">
+
+{/* 🌐 PRIMARY CTA - WEBSITE / MAP */}
+<a
+  href="https://maps.app.goo.gl/Pa7NeR7QMewpG7Le8"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="flex items-center gap-2 px-3 py-2 rounded-xl 
+    bg-white/10 backdrop-blur-md border border-white/20 
+  text-white text-sm font-bold tracking-wide 
+  hover:scale-105 hover:shadow-lg transition-all"
 >
-  {/* The "We are Open" Tag */}
-  <div className="flex items-center gap-2 mb-1">
-    <span className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse shadow-[0_0_8px_#22c55e]" />
-    <span className="text-[10px] font-black uppercase tracking-[0.3em] text-gray-400">
-      We are Open
-    </span>
+  📍 Visit Us
+</a>
+
+{/* ⭐ REVIEW CTA */}
+<a
+  href="https://g.page/r/CVFqcJBrhiZNEAE/review"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="flex items-center gap-2 px-3 py-2 rounded-xl 
+  bg-white/10 backdrop-blur-md border border-white/20 
+  text-gray-200 text-sm font-semibold 
+  hover:bg-white/20 transition"
+>
+  ⭐ Leave Review
+</a>
+
+{/* 📖 MENU CTA */}
+<a
+  href="https://drive.google.com/file/d/1kA5NZ79UB6Amx6bbVbJk7rsHXpLXD_We/view?usp=sharing"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="flex items-center gap-2 px-3 py-2 rounded-xl 
+  bg-white/5 border border-white/10 
+  text-gray-300 text-sm font-semibold 
+  hover:bg-white/10 transition"
+>
+  📖 View Menu
+</a>
+
+{/* 💬 WHATSAPP CTA (STRONG ACTION) */}
+<a
+  href="https://wa.me/971501229617"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="flex items-center gap-2 px-3 py-2 rounded-xl 
+ bg-white/10 backdrop-blur-md border border-white/20   hover:scale-105 hover:shadow-[0_0_20px_rgba(34,197,94,0.4)] 
+  transition-all"
+>
+  💬 WhatsApp
+</a>
+
+</div>
   </div>
 
-  {/* The 24/7 Neon Text */}
-  <span className="text-6xl font-black italic text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-    24/7
-  </span>
-</motion.div> 
-      </div>
+  {/* RIGHT SIDE STATUS CARD */}
+  <motion.div 
+    animate={{ 
+      boxShadow: [
+        "0 0 0px rgba(255,140,0,0)", 
+        "0 0 40px rgba(255,140,0,0.25)", 
+        "0 0 0px rgba(255,140,0,0)"
+      ] 
+    }}
+    transition={{ duration: 2, repeat: Infinity }}
+    className="mt-6 md:mt-0 bg-white/5 backdrop-blur-xl px-8 py-5 rounded-2xl 
+    border border-white/10 flex flex-col items-center justify-center min-w-[150px]"
+  >
+
+    {/* STATUS */}
+    <div className="flex items-center gap-2 mb-2">
+      <span className="h-2 w-2 rounded-full bg-green-400 animate-pulse shadow-[0_0_10px_#22c55e]" />
+      <span className="text-[10px] uppercase tracking-[0.3em] text-gray-400 font-bold">
+        OPEN NOW
+      </span>
+    </div>
+ 
+    <span className="text-5xl font-black italic text-white tracking-tight">
+      24/7
+    </span>
+ 
+    <span className="text-[10px] text-gray-500 mt-1 tracking-widest uppercase">
+      Always Serving
+    </span>
+
+  </motion.div>
+</div>
+
     </motion.div>
         </div>
 
@@ -186,11 +278,31 @@ const ZainTeaMenu = () => {
                 className="flex flex-col p-2"
               >
                 {classics.map((c, i) => (
-                  <div key={i} className="grid grid-cols-4 p-3 items-center border-b border-white/[0.03]">
-                    <div className="col-span-1 text-sm font-black text-gray-200 uppercase">{c.name}</div>
+                  <div
+                    key={i}
+                    className="grid grid-cols-[1.5fr_repeat(3,_1fr)_auto] p-3 items-center border-b border-white/[0.03] gap-2"
+                  >
+                    <div className="text-sm font-black text-gray-200 uppercase truncate">{c.name}</div>
                     <div className="text-center text-lg font-black text-red-600">{c.p}</div>
                     <div className="text-center text-lg font-black text-gray-500">{c.sl}</div>
                     <div className="text-center text-lg font-black text-gray-500">{c.sm}</div>
+                    <button
+                      onClick={() =>
+                        addToCart(
+                          {
+                            name: c.name,
+                            desc: 'Classic sandwich',
+                            price: `AED ${c.p}`,
+                          },
+                          1,
+                          null
+                        )
+                      }
+                      className="ml-2 w-7 h-7 flex items-center justify-center rounded-full bg-red-600 text-white hover:bg-red-500 transition-colors text-[10px] font-black"
+                      aria-label={`Add ${c.name} to cart`}
+                    >
+                      <Plus size={14} />
+                    </button>
                   </div>
                 ))}
               </motion.div>

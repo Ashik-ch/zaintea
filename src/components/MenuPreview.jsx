@@ -29,7 +29,7 @@ const MenuItem = ({ item }) => {
         if (popupTimeoutRef.current) window.clearTimeout(popupTimeoutRef.current);
 
         addedTimeoutRef.current = window.setTimeout(() => setIsAdded(false), 2000);
-        popupTimeoutRef.current = window.setTimeout(() => setShowPopup(false), 9000);
+        popupTimeoutRef.current = window.setTimeout(() => setShowPopup(false), 2000);
         setQuantity(1); // Reset quantity after adding
     };
 
@@ -153,7 +153,7 @@ const MenuItem = ({ item }) => {
                                 className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-white/10 backdrop-blur-lg border border-white/20 rounded-full py-3 px-8 text-white tracking-wide text-sm font-semibold shadow-2xl flex items-center gap-2 whitespace-nowrap"
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.2, duration: 0.4 }}
+                                transition={{ delay: 0.02, duration: 0.4 }}
                             >
                                 <span className="h-2 w-2 bg-emerald-400 rounded-full animate-pulse" />
                                 Added to cart

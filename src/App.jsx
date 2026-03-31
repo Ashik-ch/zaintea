@@ -12,7 +12,7 @@ function App() {
       <Route path="/" element={<Layout />} />
       <Route path="/landing" element={<Landing />} />
       <Route path="/prayer-times" element={<PrayerTimes />} />
-      <Route path="/menu" element={<ZainTeaMenu />} />
+      <Route path="/sandwiches" element={<ZainTeaMenu />} />
       <Route path="/tv-display" element={<TvDisplay />} />
     </Routes>
   );

@@ -26,30 +26,31 @@ export const CartProvider = ({ children }) => {
 
     const addToCart = (item, quantity = 1, variant = null) => {
         setCartItems(prev => {
-            // Create a unique ID for the item + variant combination
             const cartItemId = item.id ? `${item.id}-${variant?.name || 'default'}` : `${item.name}-${variant?.name || 'default'}`;
-
             const existingItemIndex = prev.findIndex(i => i.cartItemId === cartItemId);
-
             if (existingItemIndex > -1) {
-                // Update quantity if exists
-                const newCart = [...prev];
-                newCart[existingItemIndex].quantity += quantity;
-                return newCart;
+                // MAP creates a brand new array
+                return prev.map((cartItem, index) => {
+                    if (index === existingItemIndex) {
+                        // Return a NEW object with the updated quantity
+                        return {
+                            ...cartItem,
+                            quantity: cartItem.quantity + quantity
+                        };
+                    }
+                    return cartItem; // Keep other items as they are
+                });
             } else {
-                // Add new item
                 return [...prev, {
                     ...item,
                     cartItemId,
                     quantity,
                     selectedVariant: variant,
-                    // Use variant price if available, else item price
                     finalPrice: variant ? `AED ${variant.price}` : item.price
                 }];
             }
         });
     };
-
     const removeFromCart = (cartItemId) => {
         setCartItems(prev => prev.filter(item => item.cartItemId !== cartItemId));
     };
