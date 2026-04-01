@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Flame, Zap, Coffee, Clock, ChevronRight, Plus } from 'lucide-react';
+import React from 'react';
+import { Flame, Zap, Coffee, Clock, Plus, Utensils, Star, CupSoda } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useCart } from '../context/CartContext';
 import Cart from './Cart';
@@ -29,8 +29,70 @@ const ZainTeaMenu = () => {
     { name: "Kebab (C/B)", p: "7", sl: "7", sm: "7" },
   ];
 
+  /** Drinks, boost, snacks & coffee — same pricing as printed menu */
+  const menuSections = [
+    {
+      id: 'hot-drinks',
+      title: 'Hot Drinks',
+      Icon: Coffee,
+      items: [
+      { name: 'Zaintea Sp.', price: '2.00' },
+        { name: 'Fresh Milk Tea', price: '2.00' },
+        { name: 'Karak Tea', price: '1.00' },
+        { name: 'Black Tea', price: '1.00' },
+        { name: 'Lemon Tea', price: '1.00' },
+        { name: 'Mint Sulaimani', price: '1.00' },
+        { name: 'Ginger Tea', price: '1.00' },
+        { name: 'Lemon Mint', price: '1.50' },
+        { name: 'Lemon Mint Ginger', price: '1.50' },
+        { name: 'Black Coffee', price: '1.50' },
+        { name: 'Chukkapi', price: '2.00' },
+        { name: 'Coffee', price: '2 / 4' },
+        { name: 'Fresh Milk Coffee', price: '3 / 6' },
+        { name: 'Boost', price: '3 / 6' },
+        { name: 'Horlicks', price: '3 / 6' },
+        { name: 'Cornflakes Normal', price: '5.00' },
+        { name: 'Cornflakes Chocolate', price: '6.00' },
+        { name: 'Cappuccino with Vanilla', price: '6.00' },
+        { name: 'Hot Chocolate', price: '6.00' },
+        { name: 'Muhabbath Sulaimani', price: '2.00' },
+      ],
+    }, 
+    {
+      id: 'snacks',
+      title: 'Snacks',
+      Icon: Utensils,
+      items: [
+        { name: 'Chicken Samosa (s)', price: '0.50' },
+        { name: 'Veg Samosa', price: '1.00' },
+        { name: 'Chicken Samosa', price: '1.50' },
+        { name: 'Boiled Egg', price: '1.50' },
+        { name: 'Chicken Roll', price: '2.00' },
+        { name: 'Aloo Samosa', price: '2.00' },
+        { name: 'Vada', price: '2.00' },
+        { name: 'Upma', price: '3.00' },
+        { name: 'Egg/Veg Pups', price: '3.00' },
+        { name: 'Unnakayi', price: '3.00' },
+        { name: 'Kadala Fry', price: '3.00' },
+      ],
+    }, 
+  ];
+
+  const addMenuItem = (sectionId, sectionTitle, item, index) => {
+    addToCart(
+      {
+        id: `${sectionId}-${index}`,
+        name: item.name,
+        desc: sectionTitle,
+        price: `AED ${item.price}`,
+      },
+      1,
+      null
+    );
+  };
+
   return (
-    <div className="h-screen w-full bg-[#050505] overflow-hidden font-sans text-white flex flex-col px-5 pt-2 relative">
+    <div className="min-h-screen w-full bg-[#050505] overflow-x-hidden overflow-y-auto font-sans text-white flex flex-col px-5 pt-2 pb-8 relative">
       <Cart />
       
       {/* 1. TOP HEADER BAR */}
@@ -61,7 +123,7 @@ const ZainTeaMenu = () => {
 
 
       {/* 2. MAIN CONTENT GRID (TV SPLIT) */}
-      <div className="flex-1 grid grid-cols-12 gap-8 overflow-hidden">
+      <div className="flex-1 min-h-0 grid grid-cols-12 gap-6 lg:gap-8">
         
         {/* LEFT COLUMN: POWER SIGNATURES (Static) */}
         <div className="col-span-7 space-y-4">
@@ -98,7 +160,7 @@ const ZainTeaMenu = () => {
                         null
                       )
                     }
-                    className="w-7 h-7 flex items-center justify-center rounded-lg bg-red-600 text-white hover:bg-red-500 transition-colors text-xs font-black"
+                    className="opacity-0 group-hover:opacity-100 bg-white/10 hover:bg-red-600 p-1.5 rounded-lg transition-all"
                     aria-label={`Add ${s.name} to cart`}
                   >
                     <Plus size={16} />
@@ -273,7 +335,7 @@ border border-white/10 backdrop-blur-xl shadow-[0_20px_60px_rgba(0,0,0,0.6)] ove
             </div>
 
             {/* SCROLLING AREA */}
-            <div className="h-full overflow-hidden relative">
+            <div className="max-h-[min(52vh,28rem)] lg:max-h-[min(60vh,32rem)] overflow-y-auto relative">
               <motion.div  
                 className="flex flex-col p-2"
               >
@@ -286,7 +348,7 @@ border border-white/10 backdrop-blur-xl shadow-[0_20px_60px_rgba(0,0,0,0.6)] ove
                     <div className="text-center text-lg font-black text-red-600">{c.p}</div>
                     <div className="text-center text-lg font-black text-gray-500">{c.sl}</div>
                     <div className="text-center text-lg font-black text-gray-500">{c.sm}</div>
-                    <button
+                    {/* <button
                       onClick={() =>
                         addToCart(
                           {
@@ -302,7 +364,7 @@ border border-white/10 backdrop-blur-xl shadow-[0_20px_60px_rgba(0,0,0,0.6)] ove
                       aria-label={`Add ${c.name} to cart`}
                     >
                       <Plus size={14} />
-                    </button>
+                    </button> */}
                   </div>
                 ))}
               </motion.div>
@@ -311,7 +373,46 @@ border border-white/10 backdrop-blur-xl shadow-[0_20px_60px_rgba(0,0,0,0.6)] ove
             </div>
           </div>
         </div>
-      </div>     
+      </div>
+
+      {/* 3. FULL MENU — drinks, snacks, */}
+      <div className="mt-8 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-4">
+        {menuSections.map(({ id, title, Icon, items }) => (
+          <div
+            key={id}
+            className="bg-[#0a0a0a] rounded-[2rem] border border-white/5 overflow-hidden flex flex-col shadow-lg"
+          >
+            <div className="flex items-center gap-3 px-4 py-3 bg-white/5 border-b border-white/10">
+              <Icon className="text-red-600 shrink-0" size={20} />
+              <h2 className="text-sm font-black italic uppercase tracking-tight text-white">{title}</h2>
+            </div>
+            <div className="divide-y divide-white/[0.06] max-h-[min(50vh,22rem)] overflow-y-auto">
+              {items.map((item, i) => (
+                <div
+                  key={`${id}-${i}`}
+                  className="grid grid-cols-[1fr_auto_auto] gap-2 items-center px-3 py-2.5 hover:bg-white/[0.03]"
+                >
+                  <span className="text-[11px] sm:text-xs font-bold text-gray-200 uppercase tracking-tight leading-snug">
+                    {item.name}
+                  </span>
+                  <div className="text-right flex content-center gap-1">
+                    <span className="text-sm font-black text-red-500 tabular-nums">{item.price}</span>
+                    <span className="text-[8px] text-center content-center font-bold text-gray-600 uppercase">AED</span>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => addMenuItem(id, title, item, i)}
+                    className="opacity-0 group-hover:opacity-100 bg-white/10 hover:bg-red-600 p-1.5 rounded-lg transition-all"
+                    aria-label={`Add ${item.name} to cart`}
+                  >
+                    <Plus size={14} />
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
 
     </div>
   );
