@@ -87,7 +87,8 @@ const ZainTeaMenu = () => {
           loop
           muted
           playsInline
-          className="absolute inset-0 w-full h-full object-cover blur-xs scale-100 transition-transform duration-700"
+          style={{ webkitFilter: 'blur(4px)', filter: 'blur(4px)' }}
+          className="absolute inset-0 w-full h-full object-cover scale-105 transition-transform duration-700"
         >
           <source src={zainteaSlideshow} type="video/mp4" />
           Your browser does not support the video tag.
@@ -164,7 +165,7 @@ const ZainTeaMenu = () => {
                 <div key={s.id} className="group bg-white/40 backdrop-blur-xl border border-white/70 p-4 rounded-[2rem] flex justify-between items-center relative overflow-hidden shadow-sm hover:shadow-xl hover:bg-white/60 transition-all duration-300">
                   <div className="relative z-10">
                     <h3 className="text-xl font-black italic uppercase text-red-600">{s.name}</h3>
-                    <p className="text-[10px] text-slate-500 uppercase font-bold tracking-tight ">{s.desc}</p>
+                    <p className="text-[10px] text-black uppercase font-bold tracking-tight ">{s.desc}</p>
                   </div>
                   <div className="flex items-center gap-3 relative z-10">
                     <div className="text-right flex gap-2 items-center">
@@ -197,7 +198,7 @@ const ZainTeaMenu = () => {
                 </div>
               </div>
 
-              <div className=" bg-slate-50 px-6 py-2 rounded-2xl border border-slate-100 flex flex-col items-center">
+              <div className=" bg-slate-50/80 px-6 py-2 rounded-2xl border border-slate-100 flex flex-col items-center">
                 <div className="flex items-center gap-2">
                   <span className="h-2 w-2 rounded-full bg-green-500" />
                   <span className="text-[10px] uppercase tracking-widest text-slate-400 font-bold">OPEN NOW</span>
