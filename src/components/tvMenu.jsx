@@ -87,14 +87,14 @@ const ZainTeaMenu = () => {
           loop
           muted
           playsInline
-          className="absolute inset-0 w-full h-full object-cover blur-sm scale-100 transition-transform duration-700"
+          className="absolute inset-0 w-full h-full object-cover blur-xs scale-100 transition-transform duration-700"
         >
           <source src={zainteaSlideshow} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
 
         {/* Overlays */}
-        <div className="absolute inset-0 bg-white/10 backdrop-brightness-110" />
+        <div className="absolute inset-0" />
 
         {/* Animated mesh gradients */}
         <motion.div
@@ -104,14 +104,13 @@ const ZainTeaMenu = () => {
         />
       </div>
 
-      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+      {/* <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
         <motion.div
           animate={{ scale: [1, 1.2, 1], x: [0, 100, 0], y: [0, 50, 0] }}
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
           className="absolute -top-[10%] -left-[10%] w-[80%] h-[70%] bg-red-200/40 blur-[120px] rounded-full"
         />
-        {/* Soft Blue/Teal Glow for depth */}
-        <motion.div animate={{ scale: [1, 1.3, 1], x: [0, -80, 0], y: [0, -50, 0] }}
+         <motion.div animate={{ scale: [1, 1.3, 1], x: [0, -80, 0], y: [0, -50, 0] }}
           transition={{ duration: 25, repeat: Infinity, ease: "linear", delay: 2 }}
           className="absolute top-[20%] -right-[10%] w-[60%] h-[60%] bg-blue-100/30 blur-[100px] rounded-full"
         />
@@ -120,7 +119,7 @@ const ZainTeaMenu = () => {
           transition={{ duration: 10, repeat: Infinity }}
           className="absolute bottom-0 left-[20%] w-[70%] h-[40%] bg-orange-100/20 blur-[110px] rounded-full"
         />
-      </div>
+      </div> */}
 
       {/* --- CONTENT WRAPPER --- */}
       <div className="relative z-10 flex flex-col w-full px-5 md:px-1 mx-auto space-y-3">
