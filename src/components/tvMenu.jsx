@@ -87,15 +87,15 @@ const ZainTeaMenu = () => {
           loop
           muted
           playsInline
-          style={{ webkitFilter: 'blur(4px)', filter: 'blur(4px)' }}
           className="absolute inset-0 w-full h-full object-cover scale-105 transition-transform duration-700"
         >
           <source src={zainteaSlideshow} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
 
-        {/* Overlays */}
-        <div className="absolute inset-0" />
+        {/* Light White Overlay (The Scrim) */}
+        {/* Using bg-white/30 or bg-white/50 provides a consistent wash over the video */}
+        <div className="absolute inset-0 bg-black/40 backdrop-grayscale-0" />
 
         {/* Animated mesh gradients */}
         <motion.div
@@ -104,6 +104,7 @@ const ZainTeaMenu = () => {
           className="absolute top-0 right-0 w-full h-full bg-red-400/10 blur-[120px] rounded-full"
         />
       </div>
+
 
       {/* <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
         <motion.div
