@@ -151,17 +151,58 @@ const ZainTeaMenu = () => {
           </div>
         </div>
 
+
+
+        {/* SLIM FEATURED: GRILL CHICKEN BOX */}
+        <div className="col-span-1 sm:col-span-2 group bg-white/40 backdrop-blur-xl border border-white/70 rounded-[1.5rem] flex items-stretch overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 max-h-[80px]">
+
+          {/* Left Side: Info - Tightened padding and font */}
+          <div className="flex-1 py-3 px-5 flex flex-col justify-center">
+            <div className="flex items-center gap-2">
+              <h3 className="text-lg font-black italic uppercase text-black leading-none">Grill Chicken</h3>
+              <span className="bg-red-600 text-white text-[7px] font-black px-1.5 py-0.5 rounded-full uppercase tracking-tighter">Best Seller</span>
+            </div>
+            <p className="text-[9px] text-slate-800 uppercase font-bold tracking-tight opacity-70 leading-tight mt-0.5">
+              Grilled chicken with garlic sauce, soup, hammus and fries
+            </p>
+          </div>
+
+          {/* Right Side: Pricing - Horizontal layout for all screens to save height */}
+          <div className="bg-slate-900/90 backdrop-blur-md px-6 flex flex-row items-center gap-6 border-l border-white/20">
+
+            {/* Half Option */}
+            <div className="flex items-center gap-2">
+              <p className="text-[8px] font-black text-red-500 uppercase tracking-widest">Half</p>
+              <div className="flex items-baseline gap-0.5">
+                <span className="text-xl font-black text-white italic">20</span>
+                <span className="text-[8px] font-bold text-white/50 uppercase">AED</span>
+              </div>
+            </div>
+
+            {/* Thin Vertical Divider */}
+            <div className="h-6 w-[1px] bg-white/10"></div>
+
+            {/* Full Option */}
+            <div className="flex items-center gap-2">
+              <p className="text-[8px] font-black text-red-500 uppercase tracking-widest">Full</p>
+              <div className="flex items-baseline gap-0.5">
+                <span className="text-xl font-black text-white italic">33</span>
+                <span className="text-[8px] font-bold text-white/50 uppercase">AED</span>
+              </div>
+            </div>
+          </div>
+        </div>
         {/* 2. MAIN CONTENT GRID */}
         <div className="grid grid-cols-12 gap-4">
 
           {/* LEFT COLUMN: SIGNATURES */}
-          <div className="col-span-12 lg:col-span-7 space-y-4">
+          <div className="col-span-12 lg:col-span-7 space-y-2">
             <div className="flex items-center gap-3 px-2">
               <Zap className="text-red-600 fill-red-600/10" size={24} />
               <h2 className="text-xl font-black italic uppercase tracking-tight text-white">Signatures</h2>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               {specials.map((s) => (
                 <div key={s.id} className="group bg-white/40 backdrop-blur-xl border border-white/70 p-4 rounded-[2rem] flex justify-between items-center relative overflow-hidden shadow-sm hover:shadow-xl hover:bg-white/60 transition-all duration-300">
                   <div className="relative z-10">
