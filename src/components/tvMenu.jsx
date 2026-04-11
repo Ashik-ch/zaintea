@@ -93,9 +93,6 @@ const ZainTeaMenu = () => {
           Your browser does not support the video tag.
         </video>
 
-        {/* Light White Overlay (The Scrim) */}
-        {/* Using bg-white/30 or bg-white/50 provides a consistent wash over the video */}
-        <div className="absolute inset-0 bg-black/40 backdrop-grayscale-0" />
 
         {/* Animated mesh gradients */}
         <motion.div
@@ -106,13 +103,13 @@ const ZainTeaMenu = () => {
       </div>
 
 
-      {/* <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
         <motion.div
           animate={{ scale: [1, 1.2, 1], x: [0, 100, 0], y: [0, 50, 0] }}
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
           className="absolute -top-[10%] -left-[10%] w-[80%] h-[70%] bg-red-200/40 blur-[120px] rounded-full"
         />
-         <motion.div animate={{ scale: [1, 1.3, 1], x: [0, -80, 0], y: [0, -50, 0] }}
+        <motion.div animate={{ scale: [1, 1.3, 1], x: [0, -80, 0], y: [0, -50, 0] }}
           transition={{ duration: 25, repeat: Infinity, ease: "linear", delay: 2 }}
           className="absolute top-[20%] -right-[10%] w-[60%] h-[60%] bg-blue-100/30 blur-[100px] rounded-full"
         />
@@ -121,13 +118,14 @@ const ZainTeaMenu = () => {
           transition={{ duration: 10, repeat: Infinity }}
           className="absolute bottom-0 left-[20%] w-[70%] h-[40%] bg-orange-100/20 blur-[110px] rounded-full"
         />
-      </div> */}
+      </div>
+      <div className="absolute inset-0 bg-black/50 backdrop-grayscale-0" />
 
       {/* --- CONTENT WRAPPER --- */}
       <div className="relative z-10 flex flex-col w-full px-5 md:px-1 mx-auto space-y-3">
         <Cart />
 
-        <div className="bg-white/40 backdrop-blur-5xl backdrop-saturate-150 border border-white/60 shadow-[0_8px_32px_rgba(0,0,0,0.04)] rounded-[2.5rem]  px-6  py-5 flex justify-between items-center">
+        <div className="bg-white/50 backdrop-blur-5xl backdrop-saturate-150 border border-white/60 shadow-[0_8px_32px_rgba(0,0,0,0.04)] rounded-[2.5rem]  px-6  py-5 flex justify-between items-center">
           <div className="flex items-center gap-4">
             <h1 className="text-4xl font-black italic tracking-tighter uppercase leading-none">
               <a href="/" className="hover:opacity-80 transition-opacity">
@@ -154,7 +152,7 @@ const ZainTeaMenu = () => {
 
 
         {/* SLIM FEATURED: GRILL CHICKEN BOX */}
-        <div className="col-span-1 sm:col-span-2 group bg-white/40 backdrop-blur-xl border border-white/70 rounded-[1.5rem] flex items-stretch overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 max-h-[80px]">
+        <div className="col-span-1 sm:col-span-2 group bg-white/50 backdrop-blur-xl border border-white/70 rounded-[1.5rem] flex items-stretch overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 max-h-[80px]">
 
           {/* Left Side: Info - Tightened padding and font */}
           <div className="flex-1 py-3 px-5 flex flex-col justify-center">
@@ -204,9 +202,9 @@ const ZainTeaMenu = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               {specials.map((s) => (
-                <div key={s.id} className="group bg-white/40 backdrop-blur-xl border border-white/70 p-4 rounded-[2rem] flex justify-between items-center relative overflow-hidden shadow-sm hover:shadow-xl hover:bg-white/60 transition-all duration-300">
+                <div key={s.id} className="group bg-white/50 backdrop-blur-xl border border-white/70 p-4 rounded-[2rem] flex justify-between items-center relative overflow-hidden shadow-sm hover:shadow-xl hover:bg-white/60 transition-all duration-300">
                   <div className="relative z-10">
-                    <h3 className="text-xl font-black italic uppercase text-red-600">{s.name}</h3>
+                    <h3 className="text-xl font-black italic uppercase text-red-800">{s.name}</h3>
                     <p className="text-[10px] text-black uppercase font-bold tracking-tight ">{s.desc}</p>
                   </div>
                   <div className="flex items-center gap-3 relative z-10">
@@ -221,7 +219,7 @@ const ZainTeaMenu = () => {
             </div>
 
             {/* PROMO BANNER - Glass Card */}
-            <div className="bg-white/40 backdrop-blur-2xl border border-white/80 rounded-[2.5rem] px-6 py-4 shadow-lg flex flex-col md:flex-row justify-between items-center gap-6">
+            <div className="bg-white/50 backdrop-blur-2xl border border-white/80 rounded-[2.5rem] px-6 py-4 shadow-lg flex flex-col md:flex-row justify-between items-center gap-6">
               <div className="flex flex-col gap-4">
                 <div className="flex flex-wrap gap-4 text-[10px] font-black text-slate-900 uppercase tracking-widest">
                   <span className="flex items-center gap-2"> <Phone size={14} />+971 50 122 9617</span>
@@ -259,7 +257,7 @@ const ZainTeaMenu = () => {
               <h2 className="text-xl font-black italic uppercase tracking-tight text-white">Classics</h2>
             </div>
 
-            <div className="bg-white/40 backdrop-blur-2xl border border-white/60 rounded-[2.5rem] shadow-sm overflow-hidden">
+            <div className="bg-white/50 backdrop-blur-2xl border border-white/60 rounded-[2.5rem] shadow-sm overflow-hidden">
               <div className="grid grid-cols-4 bg-white/30 p-5 text-[10px] font-black uppercase text-slate-500 border-b border-white/20">
                 <div className="col-span-1">Variety</div>
                 <div className="text-center">Poratta</div>
@@ -269,7 +267,7 @@ const ZainTeaMenu = () => {
 
               <div className="max-h-[500px] overflow-y-auto custom-scrollbar">
                 {classics.map((c, i) => (
-                  <div key={i} className="grid grid-cols-[1.5fr_repeat(3,_1fr)] px-4 py-2 items-center border-b border-white/10 hover:bg-white/40 transition-colors">
+                  <div key={i} className="grid grid-cols-[1.5fr_repeat(3,_1fr)] px-4 py-2 items-center border-b border-white/10 hover:bg-white/50 transition-colors">
                     <div className="text-sm font-black text-slate-700 uppercase truncate">{c.name}</div>
                     <div className="text-center text-lg font-black text-slate-800">{c.p}</div>
                     <div className="text-center text-lg font-black text-slate-800">{c.sl}</div>
@@ -284,7 +282,7 @@ const ZainTeaMenu = () => {
         {/* FULL MENU SECTIONS */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
           {menuSections.map(({ id, title, Icon, items }) => (
-            <div key={id} className="bg-white/40 backdrop-blur-4xl border border-white/60 rounded-[2.5rem] overflow-hidden flex flex-col shadow-sm">
+            <div key={id} className="bg-white/50 backdrop-blur-4xl border border-white/60 rounded-[2.5rem] overflow-hidden flex flex-col shadow-sm">
               <div className="flex items-center gap-3 px-6 py-5 bg-white/30 border-b border-white/20">
                 <Icon className="text-red-600 shrink-0" size={20} />
                 <h2 className="text-sm font-black italic uppercase tracking-widest text-slate-800">{title}</h2>
@@ -292,7 +290,7 @@ const ZainTeaMenu = () => {
 
               <div className="divide-y divide-white/10 max-h-[30rem] overflow-y-auto">
                 {items.map((item, i) => (
-                  <div key={i} className="group flex justify-between items-center px-6 py-3 hover:bg-white/40 transition-colors">
+                  <div key={i} className="group flex justify-between items-center px-6 py-3 hover:bg-white/50 transition-colors">
                     <span className="text-[11px] sm:text-xs font-bold text-slate-700 uppercase">{item.name}</span>
                     <div className="flex items-center gap-2">
                       <div className="flex items-baseline gap-1">
