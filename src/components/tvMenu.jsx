@@ -78,7 +78,7 @@ const ZainTeaMenu = () => {
 
 
   return (
-    <div className="min-h-screen w-full overflow-x-hidden overflow-y-auto font-sans text-slate-900 flex flex-col px-4 pt-2 pb-8 relative">
+    <div className="min-h-screen w-full overflow-x-hidden overflow-y-auto font-sans text-black-900 flex flex-col px-4 pt-2 pb-8 relative">
 
       {/* Video Background Container */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
@@ -95,11 +95,11 @@ const ZainTeaMenu = () => {
 
 
         {/* Animated mesh gradients */}
-        <motion.div
+        {/* <motion.div
           animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.4, 0.2] }}
           transition={{ duration: 15, repeat: Infinity }}
           className="absolute top-0 right-0 w-full h-full bg-red-400/10 blur-[120px] rounded-full"
-        />
+        /> */}
       </div>
 
 
@@ -119,7 +119,7 @@ const ZainTeaMenu = () => {
           className="absolute bottom-0 left-[20%] w-[70%] h-[40%] bg-orange-100/20 blur-[110px] rounded-full"
         />
       </div>
-      <div className="absolute inset-0 bg-black/50 backdrop-grayscale-0" />
+      {/* <div className="absolute inset-0 bg-black/50 backdrop-grayscale-0" /> */}
 
       {/* --- CONTENT WRAPPER --- */}
       <div className="relative z-10 flex flex-col w-full px-5 md:px-1 mx-auto space-y-3">
@@ -132,7 +132,7 @@ const ZainTeaMenu = () => {
                 ZAIN <span className="text-red-600">TEA</span>
               </a>
             </h1>
-            <div className="hidden sm:block bg-red-500/10 border border-white px-3 py-1 rounded-full text-white text-[10px] font-black tracking-widest uppercase italic">
+            <div className="hidden sm:block bg-red-500/80 border border-white px-3 py-1 rounded-full text-white text-[10px] font-black tracking-widest uppercase italic">
               anytime Tea
             </div>
           </div>
@@ -145,7 +145,7 @@ const ZainTeaMenu = () => {
               </span>
               <span className="text-xs font-black uppercase tracking-widest text-scale-700">Open 24/7</span>
             </div>
-            <p className="text-[10px] font-bold text-slate-800 uppercase tracking-widest">Bur Dubai</p>
+            <p className="text-[10px] font-bold text-black-800 uppercase tracking-widest">Bur Dubai</p>
           </div>
         </div>
 
@@ -160,7 +160,7 @@ const ZainTeaMenu = () => {
               <h3 className="text-lg font-black italic uppercase text-black leading-none">Grill Chicken</h3>
               <span className="bg-red-600 text-white text-[7px] font-black px-1.5 py-0.5 rounded-full uppercase tracking-tighter">Best Seller</span>
             </div>
-            <p className="text-[9px] text-slate-800 uppercase font-bold tracking-tight opacity-70 leading-tight mt-0.5">
+            <p className="text-[9px] text-black-800 uppercase font-bold tracking-tight opacity-70 leading-tight mt-0.5">
               Grilled chicken with garlic sauce, soup, hammus and fries
             </p>
           </div>
@@ -221,7 +221,7 @@ const ZainTeaMenu = () => {
             {/* PROMO BANNER - Glass Card */}
             <div className="bg-white/50 backdrop-blur-2xl border border-white/80 rounded-[2.5rem] px-6 py-4 shadow-lg flex flex-col md:flex-row justify-between items-center gap-6">
               <div className="flex flex-col gap-4">
-                <div className="flex flex-wrap gap-4 text-[10px] font-black text-slate-900 uppercase tracking-widest">
+                <div className="flex flex-wrap gap-4 text-[10px] font-black text-black uppercase tracking-widest">
                   <span className="flex items-center gap-2"> <Phone size={14} />+971 50 122 9617</span>
                   <span className="opacity-20">|</span>                    <span className="flex items-center gap-2"><Instagram size={14} /> zaintea_cafe</span>
                   <span className="opacity-20">|</span>                    <span className="flex items-center gap-2"> <Globe size={14} /> zainteacafe.com </span>
@@ -241,10 +241,10 @@ const ZainTeaMenu = () => {
               <div className=" bg-slate-50/80 px-6 py-2 rounded-2xl border border-slate-100 flex flex-col items-center">
                 <div className="flex items-center gap-2">
                   <span className="h-2 w-2 rounded-full bg-green-500" />
-                  <span className="text-[10px] uppercase tracking-widest text-slate-400 font-bold">OPEN NOW</span>
+                  <span className="text-[10px] uppercase tracking-widest text-black-400 font-bold">OPEN NOW</span>
                 </div>
-                <span className="text-5xl font-black text-slate-900 tracking-tight">24/7</span>
-                <span className="text-[10px] text-slate-400 tracking-widest uppercase">Always Serving</span>
+                <span className="text-5xl font-black text-black-900 tracking-tight">24/7</span>
+                <span className="text-[10px] text-black-400 tracking-widest uppercase">Always Serving</span>
 
               </div>
             </div>
@@ -258,7 +258,7 @@ const ZainTeaMenu = () => {
             </div>
 
             <div className="bg-white/50 backdrop-blur-2xl border border-white/60 rounded-[2.5rem] shadow-sm overflow-hidden">
-              <div className="grid grid-cols-4 bg-white/30 p-5 text-[10px] font-black uppercase text-slate-500 border-b border-white/20">
+              <div className="grid grid-cols-4 bg-white/40 px-5 py-4 text-[12px] font-black uppercase text-black-500 border-b border-white/20">
                 <div className="col-span-1">Variety</div>
                 <div className="text-center">Poratta</div>
                 <div className="text-center">Slice</div>
@@ -268,10 +268,10 @@ const ZainTeaMenu = () => {
               <div className="max-h-[500px] overflow-y-auto custom-scrollbar">
                 {classics.map((c, i) => (
                   <div key={i} className="grid grid-cols-[1.5fr_repeat(3,_1fr)] px-4 py-2 items-center border-b border-white/10 hover:bg-white/50 transition-colors">
-                    <div className="text-sm font-black text-slate-700 uppercase truncate">{c.name}</div>
-                    <div className="text-center text-lg font-black text-slate-800">{c.p}</div>
-                    <div className="text-center text-lg font-black text-slate-800">{c.sl}</div>
-                    <div className="text-center text-lg font-black text-slate-800">{c.sm}</div>
+                    <div className="text-sm font-black text-black uppercase truncate">{c.name}</div>
+                    <div className="text-center text-lg font-black text-black">{c.p}</div>
+                    <div className="text-center text-lg font-black text-black">{c.sl}</div>
+                    <div className="text-center text-lg font-black text-black">{c.sm}</div>
                   </div>
                 ))}
               </div>
@@ -282,20 +282,20 @@ const ZainTeaMenu = () => {
         {/* FULL MENU SECTIONS */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
           {menuSections.map(({ id, title, Icon, items }) => (
-            <div key={id} className="bg-white/50 backdrop-blur-4xl border border-white/60 rounded-[2.5rem] overflow-hidden flex flex-col shadow-sm">
-              <div className="flex items-center gap-3 px-6 py-5 bg-white/30 border-b border-white/20">
+            <div key={id} className="bg-white/60 backdrop-blur-4xl border border-white/60 rounded-[2.5rem] overflow-hidden flex flex-col shadow-sm">
+              <div className="flex items-center gap-3 px-6 py-5 bg-white/40 border-b border-white/20">
                 <Icon className="text-red-600 shrink-0" size={20} />
-                <h2 className="text-sm font-black italic uppercase tracking-widest text-slate-800">{title}</h2>
+                <h2 className="text-sm font-black italic uppercase tracking-widest text-black-800">{title}</h2>
               </div>
 
               <div className="divide-y divide-white/10 max-h-[30rem] overflow-y-auto">
                 {items.map((item, i) => (
                   <div key={i} className="group flex justify-between items-center px-6 py-3 hover:bg-white/50 transition-colors">
-                    <span className="text-[11px] sm:text-xs font-bold text-slate-700 uppercase">{item.name}</span>
+                    <span className="text-[11px] sm:text-xs font-bold text-black-700 uppercase">{item.name}</span>
                     <div className="flex items-center gap-2">
                       <div className="flex items-baseline gap-1">
-                        <span className="text-sm font-black text-white">{item.price}</span>
-                        <span className="text-[8px] font-bold text-white uppercase">AED</span>
+                        <span className="text-sm font-black text-black">{item.price}</span>
+                        <span className="text-[8px] font-bold text-black uppercase">AED</span>
                       </div>
 
                     </div>
