@@ -1,0 +1,46 @@
+import React, { useEffect, useState } from 'react';
+import { Sun, Moon } from 'lucide-react';
+
+const ThemeToggle = () => {
+    const getDefaultTheme = () => {
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme) return savedTheme;
+
+        const hour = new Date().getHours();
+
+        // Dark mode from 6PM to 6AM
+        if (hour >= 18 || hour < 6) {
+            return "dark";
+        }
+
+        return "light";
+    };
+
+    const [theme, setTheme] = useState(getDefaultTheme);
+
+
+    useEffect(() => {
+        if (theme === 'dark') {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+        localStorage.setItem('theme', theme);
+    }, [theme]);
+
+    const toggleTheme = () => {
+        setTheme(theme === 'dark' ? 'light' : 'dark');
+    };
+
+    return (
+        <button
+            onClick={toggleTheme}
+            className="p-2 rounded-full border border-zain-beige/20 text-zain-brown dark:text-zain-beige hover:bg-zain-gold/10 transition-colors"
+            aria-label="Toggle Theme"
+        >
+            {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+        </button>
+    );
+};
+
+export default ThemeToggle;
