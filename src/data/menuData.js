@@ -50,10 +50,10 @@ const parseVariants = (priceStr) => {
 
 const rawMenuData = {
     grill: [
-        { name: 'Grill Chicken (Full)', price: 'AED 30', desc: 'With a Soup, Saladm Hammus, Garlic, French Fries' },
-        { name: 'Grill Chicken (Half)', price: 'AED 19', desc: 'With a Soup, Saladm Hammus, Garlic, French Fries' },
-        { name: 'Grill Chicken With Rice (Full)', price: 'AED 42', desc: 'Rice Served with a Soup, Raitha, Tomato, Salad' },
-        { name: 'Grill Chicken With Rice (Half)', price: 'AED 22', desc: 'Rice Served with a Soup, Raitha, Tomato, Salad' },
+        { name: 'Grill Chicken (Full)', price: 'AED 33', desc: 'With a Soup, Saladm Hammus, Garlic, French Fries' },
+        { name: 'Grill Chicken (Half)', price: 'AED 20', desc: 'With a Soup, Saladm Hammus, Garlic, French Fries' },
+        { name: 'Grill Chicken With Rice (Full)', price: 'AED 44', desc: 'Rice Served with a Soup, Raitha, Tomato, Salad' },
+        { name: 'Grill Chicken With Rice (Half)', price: 'AED 24', desc: 'Rice Served with a Soup, Raitha, Tomato, Salad' },
     ],
     burgers: [
         { name: 'Zain Special Burger', price: 'AED 14', desc: 'Double patty, cheese overload' },
@@ -111,17 +111,13 @@ const rawMenuData = {
         { id: 73, name: "Strawberry Mojito", price: "AED 12" }
     ],
     sandwiches: [
-        { id: 147, name: 'Egg Slice ', price: 'AED 5', desc: 'Fresh egg slices with soft bread' },
-        { id: 148, name: 'Chicken Slice ', price: 'AED 5', desc: 'Chicken slices with classic seasoning' },
-        { id: 149, name: 'Hotdog Slice', price: 'AED 5', desc: 'Juicy hotdog with sauce' },
+        { id: 147, name: 'Omlette Slice ', price: 'AED 6', desc: 'Fresh egg slices with soft bread' },
+        { id: 148, name: 'Chicken Slice ', price: 'AED 6', desc: 'Chicken slices with classic seasoning' },
+        { id: 149, name: 'Hotdog Slice', price: 'AED 6', desc: 'Juicy hotdog with sauce' },
         { id: 150, name: 'Veg Slice ', price: 'AED 6', desc: 'Mixed vegetable slices with light spread' },
         { id: 151, name: 'Chicken Sandwich', price: 'AED 6', desc: 'Signature chicken sandwich' },
-        { id: 152, name: 'Francisco Sandwich', price: 'AED 8', desc: 'Special Francisco-style filling' },
-        { id: 153, name: 'Vegetable Sandwich', price: 'AED 5', desc: 'Fresh vegetables with mild seasoning' },
-        { id: 154, name: 'Egg Sandwich', price: 'AED 5', desc: 'Classic egg sandwich' },
-        { id: 155, name: 'Beef Sandwich', price: 'AED 6', desc: 'Tender beef with rich flavor' },
-        { id: 156, name: 'Hotdog Sandwich', price: 'AED 5', desc: 'Hotdog with soft bun and sauce' }
-    ],
+        
+  ],
 
     club: [
         { id: 111, name: 'Zain Special Club', price: 'AED 15', desc: 'House special club sandwich' },
@@ -142,15 +138,21 @@ const rawMenuData = {
         { id: 125, name: 'Chicken Nuggets Poratta', price: 'AED 10', desc: 'Crunchy nuggets wrapped in poratta' },
         { id: 126, name: 'Kabab Poratta', price: 'AED 10', desc: 'Spiced kabab with layered poratta' },
 
-        { id: 127, name: 'Egg Poratta', price: 'AED 4', desc: 'Simple egg poratta' },
-        { id: 128, name: 'Hotdog Poratta', price: 'AED 5', desc: 'Hotdog wrapped in poratta' },
-        { id: 129, name: 'Omelette Poratta', price: 'AED 4', desc: 'Classic omelette poratta' },
+        { id: 129, name: 'Omelette Poratta', price: 'AED 5', desc: 'Classic omelette poratta' },
+        { id: 127, name: 'Egg Poratta', price: 'AED 5', desc: 'Simple egg poratta' },
+        { id: 128, name: 'Hotdog Poratta', price: 'AED 6', desc: 'Hotdog wrapped in poratta' },
         { id: 130, name: 'Veg Poratta', price: 'AED 6', desc: 'Mixed vegetable poratta' },
-        { id: 131, name: 'Falafel Poratta', price: 'AED 5', desc: 'Falafel wrap in poratta' },
-        { id: 132, name: 'Chicken Chilli Poratta', price: 'AED 5', desc: 'Spicy chicken chilli filling' },
-        { id: 133, name: 'Onion Chips Poratta', price: 'AED 4', desc: 'Crispy onion chips inside poratta' },
-        { id: 134, name: 'Beef Poratta', price: 'AED 7', desc: 'Tender beef wrapped in poratta' }
-    ],
+        { id: 131, name: 'Falafel Poratta', price: 'AED 6', desc: 'Falafel wrap in poratta' },
+        { id: 132, name: 'Chicken Chilli Poratta', price: 'AED 6', desc: 'Spicy chicken chilli filling' },
+        { id: 134, name: 'Beef Poratta', price: 'AED 7', desc: 'Tender beef wrapped in poratta' },
+   
+        { id: 153, name: 'Francisco', price: 'AED 7', desc: 'Chikken Chilli, Amwaj, Cheese, Mayo' },
+        { id: 152, name: 'Bazooka', price: 'AED 7', desc: 'Chikken Chilli, Cheetos, Hot Sauce' },
+        { id: 154, name: 'Rayyan', price: 'AED 7', desc: 'Zinger, Amwaj, Cheese, Fries' },
+        { id: 155, name: 'Zarooni', price: 'AED 7', desc: 'Zinger, Amwaj, Cheese, Hot Sauce' },
+        { id: 156, name: 'Royal Mix', price: 'AED 8', desc: 'Popcorn Chicken, Tikka, Fries, Oman Chips' },
+        { id: 156, name: 'Zain Special Mini', price: 'AED 8', desc: 'Chicken Chilli, Sheesh Tawook,Chips, Oman Chips' }
+   ],
 };
 
 // Process data to include variants and base prices
