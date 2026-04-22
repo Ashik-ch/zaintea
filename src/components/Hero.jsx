@@ -195,8 +195,14 @@ import porotta from "../assets/menu-porota.png";
 import burger from "../assets/menu-burger.png";
 import juice from "../assets/mojito-juice.jpg";
 import tea from "../assets/chaya.jpg";
+import teaVideo from "../assets/chaya.mp4";
+import burgerVideo from "../assets/burger.mp4";
+import mojitoVideo from "../assets/mojito.mp4";
+import chickenVideo from "../assets/chicken.mp4";
+import porattaVideo from "../assets/poratta.mp4";
 
 const menuImages = [grill, club, porotta, burger, juice, tea];
+// const menuVideos = [chickenVideo, porattaVideo, burgerVideo, mojitoVideo, teaVideo];
 const menuItems = [
     "Signature Grill",
     "Club Sandwich",
@@ -292,6 +298,10 @@ const Hero = () => {
                                     className="w-full h-full object-cover flex-shrink-0"
                                 />
                             ))}
+
+                            {/* {menuVideos.map((video, i) => (
+                                <video key={i} src={video} autoPlay loop muted className="w-full h-full object-cover flex-shrink-0" />
+                            ))} */}
                         </motion.div>
                     </div>
 
