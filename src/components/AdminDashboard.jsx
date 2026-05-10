@@ -3,7 +3,7 @@ import { collection, getDocs, doc, setDoc } from 'firebase/firestore';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { db, auth } from '../firebase/config';
 import { useNavigate } from 'react-router-dom';
-import { Edit2, Trash2, Plus, LogOut } from 'lucide-react';
+import { Edit2, Trash2, Plus, LogOut, DownloadCloud } from 'lucide-react';
 
 const AdminDashboard = () => {
     const [user, setUser] = useState(null);
@@ -61,6 +61,27 @@ const AdminDashboard = () => {
     const handleLogout = async () => {
         await signOut(auth);
         navigate('/admin');
+    };
+
+    const handleDownloadBackup = () => {
+        const backupData = {
+            exportDate: new Date().toISOString(),
+            categories: categories,
+            menuData: menuData
+        };
+
+        const jsonString = JSON.stringify(backupData, null, 2);
+        const blob = new Blob([jsonString], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+
+        const link = document.createElement("a");
+        link.href = url;
+        const dateStr = new Date().toISOString().split('T')[0];
+        link.download = `zaintea_menu_backup_${dateStr}.json`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
     };
 
     const handleEdit = (item, index) => {
@@ -126,12 +147,20 @@ const AdminDashboard = () => {
                     <h1 className="text-4xl font-display font-bold">Admin Dashboard</h1>
                     <p className="text-zain-brown/60 dark:text-zain-beige/60">Manage your Zaintea Menu</p>
                 </div>
-                <button 
-                    onClick={handleLogout}
-                    className="flex items-center gap-2 px-4 py-2 bg-zain-brown/10 dark:bg-white/10 rounded-lg hover:bg-zain-red hover:text-white transition-colors"
-                >
-                    <LogOut size={16} /> Logout
-                </button>
+                <div className="flex gap-4">
+                    <button 
+                        onClick={handleDownloadBackup}
+                        className="flex items-center gap-2 px-4 py-2 bg-blue-500/10 text-blue-500 dark:bg-blue-400/10 dark:text-blue-400 rounded-lg hover:bg-blue-500 hover:text-white dark:hover:bg-blue-500 dark:hover:text-white transition-colors"
+                    >
+                        <DownloadCloud size={16} /> Backup Data
+                    </button>
+                    <button 
+                        onClick={handleLogout}
+                        className="flex items-center gap-2 px-4 py-2 bg-zain-brown/10 dark:bg-white/10 rounded-lg hover:bg-zain-red hover:text-white transition-colors"
+                    >
+                        <LogOut size={16} /> Logout
+                    </button>
+                </div>
             </div>
 
             <div className="flex flex-col lg:flex-row gap-8">
