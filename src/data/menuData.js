@@ -48,7 +48,7 @@ const parseVariants = (priceStr) => {
     return null;
 };
 
-const rawMenuData = {
+export const rawMenuData = {
     grill: [
         { name: 'Grill Chicken (Full)', price: 'AED 33', desc: 'With a Soup, Saladm Hammus, Garlic, French Fries' },
         { name: 'Grill Chicken (Half)', price: 'AED 20', desc: 'With a Soup, Saladm Hammus, Garlic, French Fries' },
@@ -116,8 +116,7 @@ const rawMenuData = {
         { id: 149, name: 'Hotdog Slice', price: 'AED 6', desc: 'Juicy hotdog with sauce' },
         { id: 150, name: 'Veg Slice ', price: 'AED 6', desc: 'Mixed vegetable slices with light spread' },
         { id: 151, name: 'Chicken Sandwich', price: 'AED 6', desc: 'Signature chicken sandwich' },
-        
-  ],
+    ],
 
     club: [
         { id: 111, name: 'Zain Special Club', price: 'AED 15', desc: 'House special club sandwich' },
@@ -145,14 +144,14 @@ const rawMenuData = {
         { id: 131, name: 'Falafel Poratta', price: 'AED 6', desc: 'Falafel wrap in poratta' },
         { id: 132, name: 'Chicken Chilli Poratta', price: 'AED 6', desc: 'Spicy chicken chilli filling' },
         { id: 134, name: 'Beef Poratta', price: 'AED 7', desc: 'Tender beef wrapped in poratta' },
-   
+
         { id: 153, name: 'Francisco', price: 'AED 7', desc: 'Chikken Chilli, Amwaj, Cheese, Mayo' },
         { id: 152, name: 'Bazooka', price: 'AED 7', desc: 'Chikken Chilli, Cheetos, Hot Sauce' },
         { id: 154, name: 'Rayyan', price: 'AED 7', desc: 'Zinger, Amwaj, Cheese, Fries' },
         { id: 155, name: 'Zarooni', price: 'AED 7', desc: 'Zinger, Amwaj, Cheese, Hot Sauce' },
         { id: 156, name: 'Royal Mix', price: 'AED 8', desc: 'Popcorn Chicken, Tikka, Fries, Oman Chips' },
         { id: 156, name: 'Zain Special Mini', price: 'AED 8', desc: 'Chicken Chilli, Sheesh Tawook,Chips, Oman Chips' }
-   ],
+    ],
 };
 
 // Process data to include variants and base prices

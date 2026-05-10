@@ -1,6 +1,8 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { categories, menuData } from '../data/menuData';
+import { categories } from '../data/menuData';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../firebase/config';
 import { useCart } from '../context/CartContext';
 import { Plus, Minus, ShoppingBag } from 'lucide-react';
 import Cart from './Cart';
@@ -176,6 +178,29 @@ const MenuItem = ({ item }) => {
 
 const MenuPreview = () => {
     const [activeTab, setActiveTab] = useState('grill');
+    const [menuData, setMenuData] = useState({});
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchMenu = async () => {
+            try {
+                const querySnapshot = await getDocs(collection(db, 'menu'));
+                let newMenuData = {};
+                
+                querySnapshot.forEach((doc) => {
+                    const data = doc.data();
+                    newMenuData[doc.id] = data.items;
+                });
+                
+                setMenuData(newMenuData);
+            } catch (error) {
+                console.error("Error fetching menu from Firebase:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchMenu();
+    }, []);
 
     return (
         <section id="menu" className="py-20 bg-transparent relative min-h-screen">
@@ -224,9 +249,15 @@ const MenuPreview = () => {
                                     transition={{ duration: 0.3 }}
                                     className="flex flex-col gap-6"
                                 >
-                                    {menuData[activeTab]?.map((item, idx) => (
-                                        <MenuItem key={idx} item={item} />
-                                    ))}
+                                    {loading ? (
+                                        <div className="text-center py-10 text-zain-brown/50 dark:text-zain-beige/50 animate-pulse">
+                                            Loading fresh menu...
+                                        </div>
+                                    ) : (
+                                        menuData[activeTab]?.map((item, idx) => (
+                                            <MenuItem key={idx} item={item} />
+                                        ))
+                                    )}
                                 </motion.div>
                             </AnimatePresence>
                         </div>
