@@ -6,6 +6,8 @@ import PrayerTimes from './components/PrayerTimes';
 import TvDisplay from './components/TvDisplay';
 import TvMenu from './components/tvMenu';
 import Testimonials from './components/Testimonials';
+import AdminLogin from './components/AdminLogin';
+import AdminDashboard from './components/AdminDashboard';
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
       <Route path="/sandwiches" element={<TvMenu />} />
       <Route path="/tv-menu" element={<TvMenu />} />
       <Route path="/tv-display" element={<TvDisplay />} />
+      <Route path="/admin" element={<AdminLogin />} />
+      <Route path="/admin/dashboard" element={<AdminDashboard />} />
     </Routes>
   );
 }
