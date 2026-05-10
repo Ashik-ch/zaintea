@@ -1,3 +1,337 @@
+import React, { useEffect, useRef, useState } from "react";
+import {
+    motion,
+    AnimatePresence,
+    useScroll,
+    useTransform,
+} from "framer-motion";
+
+import chickenVideo from "../assets/chicken.mp4";
+
+import grill from "../assets/hero-chicken.png";
+import club from "../assets/menu-club.png";
+import porotta from "../assets/menu-porota.png";
+import burger from "../assets/menu-burger.png";
+import juice from "../assets/mojito-juice.jpg";
+import tea from "../assets/chaya.jpg";
+
+const menuImages = [grill, club, porotta, burger, juice, tea];
+
+const menuItems = [
+    "Signature Grill",
+    "Club Sandwich",
+    "Porotta Sandwich",
+    "Burgers",
+    "Fresh Juices",
+    "Tea & Beverages",
+];
+
+const Hero = () => {
+    const sectionRef = useRef(null);
+
+    const { scrollYProgress } = useScroll({
+        target: sectionRef,
+        offset: ["start start", "end start"],
+    });
+
+    const heroY = useTransform(scrollYProgress, [0, 1], [0, 120]);
+    const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
+
+    const [active, setActive] = useState(0);
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setActive((prev) => (prev + 1) % menuItems.length);
+        }, 3000);
+
+        return () => clearInterval(timer);
+    }, []);
+
+    return (
+        <section
+            ref={sectionRef}
+            className="relative min-h-screen overflow-hidden bg-black text-white"
+        >
+            {/* VIDEO BACKGROUND */}
+            <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="absolute inset-0 h-full w-full object-cover scale-105"
+            >
+                <source src={chickenVideo} type="video/mp4" />
+            </video>
+
+            {/* DARK OVERLAY */}
+            <div className="absolute inset-0 bg-black/60" />
+
+            {/* CINEMATIC VIGNETTE */}
+            <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/20 to-black/90" />
+
+            {/* NOISE TEXTURE */}
+            <div className="absolute inset-0 opacity-[0.04] mix-blend-soft-light bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+
+            {/* LIGHT GLOW */}
+            <motion.div
+                animate={{
+                    x: [0, 80, -40, 0],
+                    y: [0, -40, 20, 0],
+                }}
+                transition={{
+                    duration: 18,
+                    repeat: Infinity,
+                }}
+                className="absolute left-[-10%] top-[-10%] h-[500px] w-[500px] rounded-full bg-orange-500/20 blur-[140px]"
+            />
+
+            <motion.div
+                animate={{
+                    x: [0, -60, 30, 0],
+                    y: [0, 40, -20, 0],
+                }}
+                transition={{
+                    duration: 20,
+                    repeat: Infinity,
+                }}
+                className="absolute bottom-[-20%] right-[-10%] h-[500px] w-[500px] rounded-full bg-yellow-500/10 blur-[160px]"
+            />
+
+            {/* FLOATING PARTICLES */}
+            {[...Array(20)].map((_, i) => (
+                <motion.div
+                    key={i}
+                    initial={{
+                        y: "100vh",
+                        x: Math.random() * 1400,
+                        opacity: 0,
+                    }}
+                    animate={{
+                        y: "-10vh",
+                        opacity: [0, 1, 0],
+                    }}
+                    transition={{
+                        duration: 12 + Math.random() * 10,
+                        repeat: Infinity,
+                        delay: Math.random() * 5,
+                    }}
+                    className="absolute h-1.5 w-1.5 rounded-full bg-white/40"
+                />
+            ))}
+
+            {/* HUGE BACKGROUND TEXT */}
+            <motion.h1
+                style={{ opacity }}
+                className="pointer-events-none absolute bottom-0 left-1/2 z-0 -translate-x-1/2 text-[24vw] font-black uppercase tracking-[-0.08em] text-white/[0.03]"
+            >
+                ZAINTEA
+            </motion.h1>
+
+            {/* MAIN CONTENT */}
+            <div className="relative z-20 mx-auto grid min-h-screen max-w-7xl items-center gap-10 px-6 lg:grid-cols-2">
+                {/* LEFT CONTENT */}
+                <motion.div
+                    initial={{ opacity: 0, y: 60 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1 }}
+                    className="flex flex-col gap-6"
+                >
+                    {/* BADGE */}
+                    <div className="w-fit rounded-full border border-white/10 bg-white/[0.06] px-5 py-2 backdrop-blur-2xl">
+                        <span className="text-xs uppercase tracking-[0.35em] text-orange-300">
+                            Bur Dubai
+                        </span>
+                    </div>
+
+                    {/* TITLE */}
+                    <motion.h1
+                        className="text-[3rem] font-black uppercase leading-[0.85] tracking-[-0.05em] md:text-[5rem]"
+                        animate={{
+                            y: [0, -5, 0],
+                        }}
+                        transition={{
+                            duration: 8,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                        }}
+                    >
+                        NOT JUST
+                        <br />
+                        FOOD.
+                        <br />
+                        <span className="text-orange-300">AN EXPERIENCE.</span>
+                    </motion.h1>
+
+                    {/* SUBTEXT */}
+                    <p className="max-w-xl text-lg leading-relaxed text-white/60">
+                        Crafted flavors, immersive ambience, and unforgettable dining.
+                        Step into a cinematic culinary journey where taste meets emotion.
+                    </p>
+
+                    {/* BUTTONS */}
+                    <div className="flex flex-wrap gap-4 pt-4">
+                        <button className="group relative overflow-hidden rounded-full bg-orange-400 px-8 py-4 font-semibold text-black transition hover:scale-105">
+                            <span className="relative z-10"><a href="#menu">  EXPLORE MENU</a></span>
+
+                            <motion.div
+                                animate={{
+                                    x: ["-100%", "200%"],
+                                }}
+                                transition={{
+                                    duration: 3,
+                                    repeat: Infinity,
+                                    ease: "linear",
+                                }}
+                                className="absolute inset-y-0 w-20 rotate-12 bg-white/30 blur-xl"
+                            />
+                        </button>
+
+                        <button className="rounded-full border border-white/10 bg-white/[0.06] px-8 py-4 font-semibold backdrop-blur-2xl transition hover:bg-white/[0.1]">
+                            ORDER NOW
+                        </button>
+                    </div>
+
+                    {/* STATS */}
+                    <div className="flex flex-wrap gap-4 pt-4">
+                        {[
+                            "Open 24/7",
+                            "Since 2021",
+                            "4.9 Rating",
+                        ].map((item, i) => (
+                            <div
+                                key={i}
+                                className="rounded-full border border-white/10 bg-white/[0.05] px-5 py-2 text-sm text-white/70 backdrop-blur-xl"
+                            >
+                                {item}
+                            </div>
+                        ))}
+                    </div>
+                </motion.div>
+
+                {/* RIGHT VISUAL */}
+                <motion.div
+                    style={{ y: heroY }}
+                    className="relative flex h-[750px] items-center justify-center"
+                >
+                    {/* ROTATING RINGS */}
+                    <div className="absolute h-[540px] w-[540px] animate-spin rounded-full border border-white/10 [animation-duration:30s]" />
+
+                    <div className="absolute h-[680px] w-[680px] animate-spin rounded-full border border-dashed border-white/10 [animation-direction:reverse] [animation-duration:40s]" />
+
+                    {/* GLOW */}
+                    <div className="absolute h-[400px] w-[400px] rounded-full bg-orange-400/20 blur-[100px]" />
+
+                    {/* FLOATING STACK */}
+                    <div className="relative h-[520px] w-[360px]">
+                        <AnimatePresence mode="wait">
+                            <motion.div
+                                key={active}
+                                initial={{
+                                    opacity: 0,
+                                    scale: 0.9,
+                                    rotate: -6,
+                                    y: 40,
+                                }}
+                                animate={{
+                                    opacity: 1,
+                                    scale: 1,
+                                    rotate: 0,
+                                    y: 0,
+                                }}
+                                exit={{
+                                    opacity: 0,
+                                    scale: 1.1,
+                                    rotate: 6,
+                                    y: -40,
+                                }}
+                                transition={{
+                                    duration: 0.8,
+                                    ease: "easeInOut",
+                                }}
+                                className="absolute inset-0 overflow-hidden rounded-[36px]
+            border border-white/10
+            bg-white/[0.06]
+            shadow-[0_20px_80px_rgba(0,0,0,0.45)]
+            backdrop-blur-2xl"
+                            >
+                                {/* IMAGE */}
+                                <img
+                                    src={menuImages[active]}
+                                    alt=""
+                                    className="h-full w-full object-cover scale-105"
+                                />
+
+                                {/* DARK CINEMATIC OVERLAY */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent" />
+
+                                {/* LIGHT SWEEP */}
+                                <motion.div
+                                    animate={{
+                                        x: ["-100%", "220%"],
+                                    }}
+                                    transition={{
+                                        duration: 4,
+                                        repeat: Infinity,
+                                        ease: "linear",
+                                    }}
+                                    className="absolute inset-y-0 w-24 rotate-12 bg-white/20 blur-2xl"
+                                />
+
+                                {/* CONTENT */}
+                                <div className="absolute bottom-0 left-0 z-20 p-7">
+                                    <motion.h3
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: 0.2 }}
+                                        className="text-4xl font-black tracking-[-0.03em]"
+                                    >
+                                        {menuItems[active]}
+                                    </motion.h3>
+
+                                    <motion.p
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: 1 }}
+                                        transition={{ delay: 0.35 }}
+                                        className="mt-2 text-sm uppercase tracking-[0.3em] text-white/60"
+                                    >
+                                        Premium Taste Experience
+                                    </motion.p>
+                                </div>
+
+                                {/* FLOATING PRICE */}
+                                <motion.div
+                                    animate={{
+                                        y: [0, -10, 0],
+                                    }}
+                                    transition={{
+                                        duration: 4,
+                                        repeat: Infinity,
+                                    }}
+                                    className="absolute right-5 top-5 rounded-2xl
+                border border-white/10
+                bg-black/30
+                px-4 py-2
+                backdrop-blur-xl"
+                                >
+
+                                    {/*  span className="text-sm text-white/60">STARTING</span>
+<h4 className="text-xl font-bold text-orange-300">
+                                        AED 29
+                                    </h4> */}
+                                </motion.div>
+                            </motion.div>
+                        </AnimatePresence>
+                    </div>
+
+                </motion.div>
+            </div>
+        </section>
+    );
+};
+
+export default Hero;
+
+
 // import React, { useRef, useEffect, useState } from "react";
 // import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 // import PrayerWidget from "./PrayerWidget";
@@ -186,169 +520,169 @@
 // export default Hero;
 
 
-import React, { useRef, useEffect, useState } from "react";
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+// import React, { useRef, useEffect, useState } from "react";
+// import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 
-import grill from "../assets/hero-chicken.png";
-import club from "../assets/menu-club.png";
-import porotta from "../assets/menu-porota.png";
-import burger from "../assets/menu-burger.png";
-import juice from "../assets/mojito-juice.jpg";
-import tea from "../assets/chaya.jpg";
-import teaVideo from "../assets/chaya.mp4";
-import burgerVideo from "../assets/burger.mp4";
-import mojitoVideo from "../assets/mojito.mp4";
-import chickenVideo from "../assets/chicken.mp4";
-import porattaVideo from "../assets/poratta.mp4";
+// import grill from "../assets/hero-chicken.png";
+// import club from "../assets/menu-club.png";
+// import porotta from "../assets/menu-porota.png";
+// import burger from "../assets/menu-burger.png";
+// import juice from "../assets/mojito-juice.jpg";
+// import tea from "../assets/chaya.jpg";
+// import teaVideo from "../assets/chaya.mp4";
+// import burgerVideo from "../assets/burger.mp4";
+// import mojitoVideo from "../assets/mojito.mp4";
+// import chickenVideo from "../assets/chicken.mp4";
+// import porattaVideo from "../assets/poratta.mp4";
 
-const menuImages = [grill, club, porotta, burger, juice, tea];
-// const menuVideos = [chickenVideo, porattaVideo, burgerVideo, mojitoVideo, teaVideo];
-const menuItems = [
-    "Signature Grill",
-    "Club Sandwich",
-    "Porotta Sandwich",
-    "Burgers",
-    "Fresh Juices",
-    "Tea and Beverages",
-];
+// const menuImages = [grill, club, porotta, burger, juice, tea];
+// // const menuVideos = [chickenVideo, porattaVideo, burgerVideo, mojitoVideo, teaVideo];
+// const menuItems = [
+//     "Signature Grill",
+//     "Club Sandwich",
+//     "Porotta Sandwich",
+//     "Burgers",
+//     "Fresh Juices",
+//     "Tea and Beverages",
+// ];
 
-const Hero = () => {
-    const sectionRef = useRef(null);
-    const { scrollYProgress } = useScroll({
-        target: sectionRef,
-        offset: ["start start", "end start"],
-    });
+// const Hero = () => {
+//     const sectionRef = useRef(null);
+//     const { scrollYProgress } = useScroll({
+//         target: sectionRef,
+//         offset: ["start start", "end start"],
+//     });
 
-    const y = useTransform(scrollYProgress, [0, 1], [0, 120]);
-    const bgOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+//     const y = useTransform(scrollYProgress, [0, 1], [0, 120]);
+//     const bgOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
-    const [active, setActive] = useState(0);
+//     const [active, setActive] = useState(0);
 
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setActive((i) => (i + 1) % menuItems.length);
-        }, 2200);
-        return () => clearInterval(timer);
-    }, []);
+//     useEffect(() => {
+//         const timer = setInterval(() => {
+//             setActive((i) => (i + 1) % menuItems.length);
+//         }, 2200);
+//         return () => clearInterval(timer);
+//     }, []);
 
-    return (
-        <section
-            ref={sectionRef}
-            className="relative min-h-screen bg-zain-beige dark:bg-[#0b0b0b] overflow-hidden pt-32 md:pt-0 flex items-center transition-colors duration-500"
-        >
-            <div className="absolute -top-48 left-1/2 -translate-x-1/2 w-[900px] h-[900px] bg-zain-gold/10 blur-[160px]" />
-            <motion.h1
-                style={{ opacity: bgOpacity }}
-                className="absolute bottom-10 md:bottom-10 w-full text-center
-                text-[20vw] md:text-[22vw] font-brush text-zain-brown/5 dark:text-transparent dark:stroke-text select-none z-0 pointer-events-none"
-            >
-                Zaintea
-            </motion.h1>
+//     return (
+//         <section
+//             ref={sectionRef}
+//             className="relative min-h-screen bg-zain-beige dark:bg-[#0b0b0b] overflow-hidden pt-32 md:pt-0 flex items-center transition-colors duration-500"
+//         >
+//             <div className="absolute -top-48 left-1/2 -translate-x-1/2 w-[900px] h-[900px] bg-zain-gold/10 blur-[160px]" />
+//             <motion.h1
+//                 style={{ opacity: bgOpacity }}
+//                 className="absolute bottom-10 md:bottom-10 w-full text-center
+//                 text-[20vw] md:text-[22vw] font-brush text-zain-brown/5 dark:text-transparent dark:stroke-text select-none z-0 pointer-events-none"
+//             >
+//                 Zaintea
+//             </motion.h1>
 
-            <div className="relative z-10 container mx-auto px-6 grid md:grid-cols-2 gap-8 md:gap-16 items-center w-full">
-                <motion.div
-                    initial={{ opacity: 0, y: 50 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.9, ease: "easeOut" }}
-                    className="flex flex-col gap-4 md:gap-8 justify-center"
-                >
-                    <span className="tracking-[0.4em] text-xs md:text-sm text-zain-red dark:text-zain-gold uppercase">
-                        Bur Dubai, UAE
-                    </span>
+//             <div className="relative z-10 container mx-auto px-6 grid md:grid-cols-2 gap-8 md:gap-16 items-center w-full">
+//                 <motion.div
+//                     initial={{ opacity: 0, y: 50 }}
+//                     animate={{ opacity: 1, y: 0 }}
+//                     transition={{ duration: 0.9, ease: "easeOut" }}
+//                     className="flex flex-col gap-4 md:gap-8 justify-center"
+//                 >
+//                     <span className="tracking-[0.4em] text-xs md:text-sm text-zain-red dark:text-zain-gold uppercase">
+//                         Bur Dubai, UAE
+//                     </span>
 
-                    <h1 className="font-display text-5xl md:text-8xl leading-[0.9] text-zain-brown dark:text-white">
-                        ZAINTEA
-                    </h1>
+//                     <h1 className="font-display text-5xl md:text-8xl leading-[0.9] text-zain-brown dark:text-white">
+//                         ZAINTEA
+//                     </h1>
 
-                    <p className="text-xl md:text-3xl text-zain-red dark:text-zain-gold italic">
-                        anytime tea
-                    </p>
+//                     <p className="text-xl md:text-3xl text-zain-red dark:text-zain-gold italic">
+//                         anytime tea
+//                     </p>
 
-                    <p className="text-zain-brown/70 dark:text-zain-beige/60 max-w-md text-lg font-brush leading-relaxed">
-                        A cozy café serving freshly brewed tea, comfort food, and
-                        signature grilled specials — perfect for any time of day.
-                    </p>
-                    <div className="flex flex-wrap gap-4 md:gap-6 pt-4">
-                        <a
-                            href="https://wa.me/971501229617?text=Hi%20Zaintea!"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center justify-center px-8 md:px-10 py-4 bg-zain-red dark:bg-zain-gold text-white dark:text-black font-semibold tracking-widest hover:scale-105 transition w-full md:w-auto text-center"
-                        >
-                            ORDER NOW
-                        </a>
-                        <a href="#menu" className="inline-flex items-center justify-center px-8 md:px-10 py-4 border border-zain-red/40 dark:border-zain-gold/40 text-zain-red dark:text-zain-gold hover:bg-zain-red/10 dark:hover:bg-zain-gold/10 transition w-full md:w-auto text-center">
-                            VIEW MENU
-                        </a>
-                    </div>
-                </motion.div>
+//                     <p className="text-zain-brown/70 dark:text-zain-beige/60 max-w-md text-lg font-brush leading-relaxed">
+//                         A cozy café serving freshly brewed tea, comfort food, and
+//                         signature grilled specials — perfect for any time of day.
+//                     </p>
+//                     <div className="flex flex-wrap gap-4 md:gap-6 pt-4">
+//                         <a
+//                             href="https://wa.me/971501229617?text=Hi%20Zaintea!"
+//                             target="_blank"
+//                             rel="noopener noreferrer"
+//                             className="inline-flex items-center justify-center px-8 md:px-10 py-4 bg-zain-red dark:bg-zain-gold text-white dark:text-black font-semibold tracking-widest hover:scale-105 transition w-full md:w-auto text-center"
+//                         >
+//                             ORDER NOW
+//                         </a>
+//                         <a href="#menu" className="inline-flex items-center justify-center px-8 md:px-10 py-4 border border-zain-red/40 dark:border-zain-gold/40 text-zain-red dark:text-zain-gold hover:bg-zain-red/10 dark:hover:bg-zain-gold/10 transition w-full md:w-auto text-center">
+//                             VIEW MENU
+//                         </a>
+//                     </div>
+//                 </motion.div>
 
-                <motion.div style={{ y }} className="relative max-w-lg mx-auto w-full flex flex-col items-center">
-                    <div className="relative aspect-square rounded-2xl overflow-hidden shadow-2xl w-full">
-                        <motion.div
-                            className="flex h-full"
-                            animate={{ x: `-${active * 100}%` }}
-                            transition={{ duration: 0.8, ease: "easeInOut" }}
-                        >
-                            {menuImages.map((img, i) => (
-                                <img
-                                    key={i}
-                                    src={img}
-                                    alt="Zaintea Menu"
-                                    className="w-full h-full object-cover flex-shrink-0"
-                                />
-                            ))}
+//                 <motion.div style={{ y }} className="relative max-w-lg mx-auto w-full flex flex-col items-center">
+//                     <div className="relative aspect-square rounded-2xl overflow-hidden shadow-2xl w-full">
+//                         <motion.div
+//                             className="flex h-full"
+//                             animate={{ x: `-${active * 100}%` }}
+//                             transition={{ duration: 0.8, ease: "easeInOut" }}
+//                         >
+//                             {menuImages.map((img, i) => (
+//                                 <img
+//                                     key={i}
+//                                     src={img}
+//                                     alt="Zaintea Menu"
+//                                     className="w-full h-full object-cover flex-shrink-0"
+//                                 />
+//                             ))}
 
-                            {/* {menuVideos.map((video, i) => (
-                                <video key={i} src={video} autoPlay loop muted className="w-full h-full object-cover flex-shrink-0" />
-                            ))} */}
-                        </motion.div>
-                    </div>
+//                             {/* {menuVideos.map((video, i) => (
+//                                 <video key={i} src={video} autoPlay loop muted className="w-full h-full object-cover flex-shrink-0" />
+//                             ))} */}
+//                         </motion.div>
+//                     </div>
 
-                    {/* Live Menu Badge */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="absolute -bottom-6 left-1/2 -translate-x-1/2
-  bg-black/60 backdrop-blur-xl px-6 py-2 rounded-full
-  flex items-center gap-3 border border-white/10 shadow-lg"
-                    >
-                        <motion.span
-                            animate={{ opacity: [0.3, 1, 0.3] }}
-                            transition={{ duration: 1.5, repeat: Infinity }}
-                            className="w-2 h-2 rounded-full bg-zain-gold"
-                        />
-                        <span className="text-zain-beige/60 text-xs uppercase tracking-widest">
-                            Now Serving
-                        </span>
-                        <div className="w-36 text-center overflow-hidden">
-                            <AnimatePresence mode="wait">
-                                <motion.span
-                                    key={menuItems[active]}
-                                    initial={{ y: 10, opacity: 0 }}
-                                    animate={{ y: 0, opacity: 1 }}
-                                    exit={{ y: -10, opacity: 0 }}
-                                    transition={{ duration: 0.25 }}
-                                    className="block text-zain-gold text-sm font-medium whitespace-nowrap"
-                                >
-                                    {menuItems[active]}
-                                </motion.span>
-                            </AnimatePresence>
-                        </div>
-                    </motion.div>
-                </motion.div>
-            </div>
+//                     {/* Live Menu Badge */}
+//                     <motion.div
+//                         initial={{ opacity: 0, y: 20 }}
+//                         animate={{ opacity: 1, y: 0 }}
+//                         className="absolute -bottom-6 left-1/2 -translate-x-1/2
+//   bg-black/60 backdrop-blur-xl px-6 py-2 rounded-full
+//   flex items-center gap-3 border border-white/10 shadow-lg"
+//                     >
+//                         <motion.span
+//                             animate={{ opacity: [0.3, 1, 0.3] }}
+//                             transition={{ duration: 1.5, repeat: Infinity }}
+//                             className="w-2 h-2 rounded-full bg-zain-gold"
+//                         />
+//                         <span className="text-zain-beige/60 text-xs uppercase tracking-widest">
+//                             Now Serving
+//                         </span>
+//                         <div className="w-36 text-center overflow-hidden">
+//                             <AnimatePresence mode="wait">
+//                                 <motion.span
+//                                     key={menuItems[active]}
+//                                     initial={{ y: 10, opacity: 0 }}
+//                                     animate={{ y: 0, opacity: 1 }}
+//                                     exit={{ y: -10, opacity: 0 }}
+//                                     transition={{ duration: 0.25 }}
+//                                     className="block text-zain-gold text-sm font-medium whitespace-nowrap"
+//                                 >
+//                                     {menuItems[active]}
+//                                 </motion.span>
+//                             </AnimatePresence>
+//                         </div>
+//                     </motion.div>
+//                 </motion.div>
+//             </div>
 
-            <style jsx>{`
-                .stroke-text {
-                  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.05);
-                }
-                :global(.dark) .stroke-text {
-                   -webkit-text-stroke: 1px rgba(255, 255, 255, 0.05);
-                }
-            `}</style>
-        </section>
-    );
-};
+//             <style jsx>{`
+//                 .stroke-text {
+//                   -webkit-text-stroke: 1px rgba(255, 255, 255, 0.05);
+//                 }
+//                 :global(.dark) .stroke-text {
+//                    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.05);
+//                 }
+//             `}</style>
+//         </section>
+//     );
+// };
 
-export default Hero;
+// export default Hero;
