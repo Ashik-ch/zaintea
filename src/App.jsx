@@ -8,6 +8,7 @@ import TvMenu from './components/tvMenu';
 import Testimonials from './components/Testimonials';
 import AdminLogin from './components/AdminLogin';
 import AdminDashboard from './components/AdminDashboard';
+import JuiceMenu from './components/JuiceMenu';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Route path="/tv-menu" element={<TvMenu />} />
       <Route path="/tv-display" element={<TvDisplay />} />
       <Route path="/admin" element={<AdminLogin />} />
+      <Route path="/juices" element={<JuiceMenu />} />
       <Route path="/admin/dashboard" element={<AdminDashboard />} />
     </Routes>
   );

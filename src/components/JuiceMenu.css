@@ -1,0 +1,306 @@
+:root {
+  --primary-glow: rgba(46, 204, 113, 0.6);
+  --glass-bg: rgba(255, 255, 255, 0.07);
+  --glass-border: rgba(255, 255, 255, 0.15);
+  --text-main: #ffffff;
+  --text-muted: #cccccc;
+  --accent-gold: #f1c40f;
+}
+
+/* Core Container Setup */
+.cinematic-menu {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--text-main);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: #0d0f12;
+}
+
+/* Epic Motion Blurring Dynamic Backdrop */
+.cinematic-bg {
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+  background-size: cover;
+  background-position: center;
+  filter: blur(40px) brightness(0.25);
+  z-index: 1;
+  transition: background-image 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 20%, #050608 90%);
+  z-index: 2;
+}
+
+/* Header & Typography Styling */
+.brand-header {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  margin-top: 40px;
+  animation: fadeInDown 1s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.brand-slogan {
+  font-size: 2.8rem;
+  font-weight: 900;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #ffffff 0%, #a8ff78 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0 0 10px 0;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.brand-attributes {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.attr-tag {
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  color: var(--accent-gold);
+  border: 1px solid rgba(241, 196, 15, 0.3);
+  padding: 4px 12px;
+  border-radius: 20px;
+  background: rgba(241, 196, 15, 0.05);
+}
+
+/* Stage & Carousel Layout */
+.stage-container {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  height: 550px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.cinema-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1200px;
+}
+
+/* 3D Cinematic Cards Architecture */
+.juice-card {
+  position: absolute;
+  width: 360px;
+  height: 500px;
+  transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.card-glass-wrapper {
+  width: 100%;
+  height: 100%;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  backdrop-filter: blur(16px);
+  padding: 24px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+}
+
+/* Three-Dimensional Visual Calculations */
+.active-card {
+  transform: translate3d(0, 0, 100px) rotateY(0deg);
+  opacity: 1;
+  z-index: 5;
+  pointer-events: auto;
+  box-shadow: 0 0 40px var(--primary-glow);
+}
+
+.prev-card {
+  transform: translate3d(-340px, 0, -100px) rotateY(25deg);
+  opacity: 0.4;
+  z-index: 3;
+}
+
+.next-card {
+  transform: translate3d(340px, 0, -100px) rotateY(-25deg);
+  opacity: 0.4;
+  z-index: 3;
+}
+
+/* Image Presentation Frame */
+.image-frame {
+  width: 100%;
+  height: 200px;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.juice-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.active-card:hover .juice-img {
+  transform: scale(1.08);
+}
+
+/* Content Details */
+.juice-name {
+  font-size: 1.8rem;
+  margin: 0 0 8px 0;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.juice-recipe {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+  margin: 0;
+  min-height: 40px;
+}
+
+.divider {
+  border: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--glass-border), transparent);
+  margin: 15px 0;
+}
+
+/* Seamless Vertical Pricing Alignment */
+.vertical-prices {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.price-title {
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  color: var(--text-muted);
+  margin: 0 0 4px 0;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 6px 12px;
+  border-radius: 8px;
+  border-left: 3px solid #2ecc71;
+}
+
+.size-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.price-val {
+  font-weight: 700;
+  color: #2ecc71;
+}
+
+/* Premium Controller Navigation Buttons */
+.nav-btn {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+  cursor: pointer;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+  background: #ffffff;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+}
+
+.prev-btn {
+  left: 40px;
+}
+
+.next-btn {
+  right: 40px;
+}
+
+.nav-btn .arrow {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid var(--text-main);
+  border-right: 2px solid var(--text-main);
+}
+
+.prev-btn .arrow {
+  transform: rotate(-135deg);
+}
+
+.next-btn .arrow {
+  transform: rotate(45deg);
+}
+
+.nav-btn:hover .arrow {
+  border-color: #0d0f12;
+}
+
+/* Fixed Screen Footer Layout */
+.cinema-footer {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  background: linear-gradient(to top, #050608, transparent);
+  padding: 30px 0;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+.footer-item {
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+}
+
+/* Orchestrated Keyframe Entry Timings */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
